@@ -49,7 +49,12 @@ const title = 'PDX Phở';
 <Layout title={title} />
 <main>
   <h1>PDX Phở</h1>
-  <p>The average price for a bowl of Phở in Portland is currently ${averagePrice}</p>
+  <span>Average Price: ${averagePrice}</span>
+  <p>
+    Of the {locations.length} places serving Phở in Portland I have visted {locationsSorted.length} of
+    them. The below list is sorted with the highest rating at the top. Where the rating is the same I
+    have ranked the cheaper bowl higher.
+  </p>
   <ul>
     {
       locationsSorted.map((location) => (
