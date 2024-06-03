@@ -1,0 +1,32 @@
+---
+import type { AstroIntegrationLogger } from 'astro';
+
+interface Props {
+  name: string;
+  dateVisted: string;
+  herbs: number;
+  aroma: number;
+  flavor: number;
+  noodles: number;
+  meat: number;
+  price: number;
+  notes: string;
+}
+
+const { name, dateVisted, herbs, aroma, flavor, noodles, meat, price, notes } = Astro.props;
+const total = herbs + aroma + flavor + noodles + meat;
+---
+
+<div>
+  <h2>{name}</h2>
+  <ul>
+    <li>Price: ${price}</li>
+    <li>Notes: {notes}</li>
+  </ul>
+</div>
+
+<style>
+  li {
+    list-style: none;
+  }
+</style>

@@ -1,16 +1,83 @@
 ---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+import locations from '../data/locations.json';
+import visits from '../data/visits.json';
 
+function addVisitsToLocation(locations: any[], visits: any[]) {
+  for (const i in visits) {
+    for (const location of locations) {
+      if (visits[i].name == location.name) {
+        location.visits = visits[i];
+      }
+    }
+  }
+}
+
+// Remove locations with no visits, then sort first by price and then by total rating
+function sortLocations(locations: any[]) {
+  const filtered = locations.filter((location) => location.visits);
+
+  filtered.sort((a, b) => {
+    return a.visits.price - b.visits.price;
+  });
+
+  filtered.sort((a, b) => {
+    const aTotal =
+      a.visits.herbs + a.visits.aroma + a.visits.flavor + a.visits.noodles + a.visits.meat;
+    const bTotal =
+      b.visits.herbs + b.visits.aroma + b.visits.flavor + b.visits.noodles + b.visits.meat;
+    return bTotal - aTotal;
+  });
+
+  return filtered;
+}
+
+function calculateAveragePrice(visits: any[]) {
+  const sum = visits.reduce((acc, curr) => {
+    return acc + curr.price;
+  }, 0);
+  return sum / visits.length;
+}
+
+addVisitsToLocation(locations, visits);
+const locationsSorted = sortLocations(locations);
+const averagePrice = Number(calculateAveragePrice(visits).toFixed(2));
+const title = 'PDX Phở';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title={title} />
+<main>
+  <h1>PDX Phở</h1>
+  <p>The average price for a bowl of Phở in Portland is currently ${averagePrice}</p>
+  <ul>
+    {
+      locationsSorted.map((location) => (
+        <li>
+          <Card
+            name={location.name}
+            dateVisted={location.visits.dateVisited}
+            herbs={location.visits.herbs}
+            aroma={location.visits.aroma}
+            flavor={location.visits.flavor}
+            noodles={location.visits.noodles}
+            meat={location.visits.meat}
+            price={location.visits.price}
+            notes={location.visits.notes}
+          />
+        </li>
+      ))
+    }
+  </ul>
+</main>
+
+<style>
+  ul {
+    padding: 0;
+  }
+
+  li {
+    list-style: none;
+    margin: 2rem 0;
+  }
+</style>
