@@ -4,7 +4,7 @@ import type { AstroIntegrationLogger } from 'astro';
 interface Props {
   name: string;
   link: string;
-  dateVisted: string;
+  dateVisited: string;
   herbs: number;
   aroma: number;
   flavor: number;
@@ -14,16 +14,25 @@ interface Props {
   notes: string;
 }
 
-const { name, link, dateVisted, herbs, aroma, flavor, noodles, meat, price, notes } = Astro.props;
-const total = herbs + aroma + flavor + noodles + meat;
+const { name, link, dateVisited, herbs, aroma, flavor, noodles, meat, price, notes } = Astro.props;
+const lastVisited = new Date(dateVisited).toLocaleDateString('en-us', {
+  day: 'numeric',
+  year: 'numeric',
+  month: 'short',
+});
 ---
 
 <div>
   <a href={link}><h2>{name} (${price})</h2></a>
+  <span><i>Last Visited: {lastVisited}</i></span>
   <p>{notes}</p>
 </div>
 
 <style>
+  h2 {
+    margin: 1rem 0 0 0;
+  }
+
   a {
     text-decoration: none;
   }
