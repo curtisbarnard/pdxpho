@@ -3,6 +3,7 @@ import type { AstroIntegrationLogger } from 'astro';
 
 interface Props {
   name: string;
+  link: string;
   dateVisted: string;
   herbs: number;
   aroma: number;
@@ -13,19 +14,20 @@ interface Props {
   notes: string;
 }
 
-const { name, dateVisted, herbs, aroma, flavor, noodles, meat, price, notes } = Astro.props;
+const { name, link, dateVisted, herbs, aroma, flavor, noodles, meat, price, notes } = Astro.props;
 const total = herbs + aroma + flavor + noodles + meat;
 ---
 
 <div>
-  <h2>{name}</h2>
-  <ul>
-    <li>Price: ${price}</li>
-    <li>Notes: {notes}</li>
-  </ul>
+  <a href={link}><h2>{name} (${price})</h2></a>
+  <p>{notes}</p>
 </div>
 
 <style>
+  a {
+    text-decoration: none;
+  }
+
   li {
     list-style: none;
   }
