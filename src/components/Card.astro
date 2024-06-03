@@ -1,7 +1,8 @@
 ---
-import type { AstroIntegrationLogger } from 'astro';
+import { Image } from 'astro:assets';
 
 interface Props {
+  locationId: string;
   name: string;
   link: string;
   dateVisited: string;
@@ -14,23 +15,52 @@ interface Props {
   notes: string;
 }
 
-const { name, link, dateVisited, herbs, aroma, flavor, noodles, meat, price, notes } = Astro.props;
+const { locationId, name, link, dateVisited, herbs, aroma, flavor, noodles, meat, price, notes } =
+  Astro.props;
 const lastVisited = new Date(dateVisited).toLocaleDateString('en-us', {
   day: 'numeric',
   year: 'numeric',
   month: 'short',
 });
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/images/*.{jpeg,jpg,png,gif,webp}'
+);
+
+const phoImage = '/src/images/' + locationId + 'Av1.webp';
+const herbsImage = '/src/images/' + locationId + 'Bv1.webp';
+if (!images[phoImage])
+  throw new Error(`"${phoImage}" does not exist in glob: "src/images/*.{jpeg,jpg,png,gif,webp}"`);
+if (!images[herbsImage])
+  throw new Error(`"${herbsImage}" does not exist in glob: "src/images/*.{jpeg,jpg,png,gif,webp}"`);
 ---
 
-<div>
+<div class='card'>
   <a href={link}><h2>{name} (${price})</h2></a>
   <span><i>Last Visited: {lastVisited}</i></span>
+  <div class='images'>
+    <Image src={images[phoImage]()} alt='A bowl of Vietnamese beef noodle soup' width='325' />
+    <Image
+      src={images[herbsImage]()}
+      alt='A plate of herbs used to top beef noodle soup'
+      width='325'
+    />
+  </div>
   <p>{notes}</p>
 </div>
 
 <style>
+  .card {
+    border-color: hsl(0, 0%, 80%);
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 1rem;
+    padding: 2rem;
+    background-color: hsl(0, 0%, 100%);
+  }
+
   h2 {
-    margin: 1rem 0 0 0;
+    margin: 0;
   }
 
   a {
@@ -39,5 +69,21 @@ const lastVisited = new Date(dateVisited).toLocaleDateString('en-us', {
 
   li {
     list-style: none;
+  }
+
+  .images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+  }
+
+  @media (max-width: 768px) {
+    .images {
+      display: grid;
+      grid-template-columns: 1fr;
+      justify-items: center;
+      align-items: center;
+    }
   }
 </style>

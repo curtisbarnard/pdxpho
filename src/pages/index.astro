@@ -60,6 +60,7 @@ const title = 'PDX Phở';
       locationsSorted.map((location) => (
         <li>
           <Card
+            locationId={location.id}
             name={location.name}
             link={location.link}
             dateVisited={location.visits.dateVisited}
