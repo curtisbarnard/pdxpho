@@ -1,0 +1,139 @@
+---
+import Layout from '../layouts/Layout.astro';
+const title = 'About - PDX Phở';
+---
+
+<Layout title={title} />
+<main>
+  <h1>About PDX Phở</h1>
+  <p>
+    This adventure was born out of two points of inspiration: a reddit post and the low quality of
+    ratings on Google/Yelp.
+  </p>
+  <p>
+    In 2023 I came across the <a
+      href='https://www.reddit.com/r/Seattle/comments/17dbzqw/seattle_area_pho_rankings/'
+      >Seattle Area Pho Rankings</a
+    > post by <a href='https://www.reddit.com/user/FallenHierarchy/'>u/FallenHierarchy</a> on reddit.
+    Everyone enjoys a ranking list, but it's even better when someone puts metrics to that list. While
+    reading the post I thought "You know Portland has a lot of Phở restaurants, but we only ever go to
+    a couple. I wonder if there are better ones out there we've never been to."
+  </p>
+  <p>
+    The decline of the modern web has been <a
+      href='https://www.tbray.org/ongoing/When/202x/2024/01/15/Google-2024'>written about</a
+    > a lot lately and one thing I've noticed is that while trying to find a place to eat with Google
+    Maps it won't surface results that are right next to me. Even places that have high ratings. Furthermore
+    the entire basis of getting ratings crowd sourced by people that are mostly only visiting once is
+    flawed. I figured that having a rating system where people have to visit a restaurant at least three
+    times before their rating counts would be a better system. There are obviously issue with the system,
+    mainly it being time and cost intensive, but I still like the idea. Why not narrow that down to just
+    the Phở restaurants in Portland? So here we are!
+  </p>
+  <blockquote
+    cite='https://www.nytimes.com/2012/12/03/dining/questions-for-pete-wells-restaurant-critic.html'
+  >
+    <p>
+      For a full-length review that is subject to the star system (whether the restaurant ends up
+      getting any stars or not), Times critics always visit the restaurant at least three times. At
+      least.
+    </p>
+    <footer>
+      —Pete Wells, <a
+        href='https://www.nytimes.com/2012/12/03/dining/questions-for-pete-wells-restaurant-critic.html'
+        ><cite>The New York Times</cite></a
+      >
+    </footer>
+  </blockquote>
+  <h2>Methodology</h2>
+  Taking the inspiration above I decided to come up with a method to the madness of visiting all the
+  Phở restaurants in Portland.
+  <p>
+    <em
+      >Note: This is all of course based on my specific tastes. Different people like different
+      things and so many people will probably disagree with my ratings and that is OK. I have no
+      qualifications that make me better suited to rate all these restaurants.
+    </em>
+  </p>
+  <h3>Location</h3>
+  <p>
+    The restaurant must be located within Portland. Using <a
+      href='https://gis-pdx.opendata.arcgis.com/datasets/city-boundaries/explore?location=45.542714%2C-122.654401%2C12.53'
+      >map</a
+    > from the official PortlandMaps - Open Data I cross-refrenced their location from Google or website
+    to determine if they were within the boundary. While there are plenty more restaurants outside of
+    the boundary I've decided to focus on Portland proper in order to make the project feasbile.
+  </p>
+  <h3>Phở Type</h3>
+  <p>
+    For now the goal is to only include Phở Bò (beef phở) as this is the most widespread type. While
+    there is chicken and vegetarian it is not common enough to warrant inclusion at this time,
+    perhaps after I've rated everywhere twice I might venture into other types.
+  </p>
+  <p>
+    The other rule is to try and order the Dặc Biệt and if they don't have it ask the staff what
+    their special is. I also default to a "regular" size bowl if the option is presented. If there
+    is an option, but the price on the menu only shows one price I get whater size that is and will
+    note it in the review.
+  </p>
+  <h3>Rating Categories</h3>
+  <p>
+    There are five categories that I rate a bowl on, all are rated on a scale of 0-5 with 5 being
+    the best. I do not take the environment/vibe, customer service or value into account. My rating
+    process is to rate them in the below order without making any modifications to the bowl. After
+    I've made initial ratings I'll write any notes as I go back and retry each component, possibly
+    adjusting the ratings. Finally, once I feel that I've covered everything I'll eat the bowl as I
+    like: Adding herbs, bean sprouts, jalapenos, and possibly lime. Then dipping meat in a combo
+    hoison/sriracha sauce. I might tweak the rating while eating the rest of the bowl, but typically
+    I do not.
+  </p>
+  <h4>Herbs</h4>
+  I'm looking for the freshness of the herbs and that a proper quantity is provided. The herbs category
+  includes:
+  <ul>
+    <li>Basil</li>
+    <li>Mung Bean Sprouts</li>
+    <li>Jalapeno</li>
+    <li>Lime</li>
+  </ul>
+  <h4>Aroma</h4>
+  How does the broth smell? I'll generally mix up the bowl to help release the aroma. Is it beefy enough,
+  but still clean? What spices stick out. I typically lean towards a more clove forward broth rather
+  than cinnamon.
+  <h4>Flavor</h4>
+  Does the broth hade a deep beefy flavor? Is it too sweet, salty or bitter? Does the flavor of the spices
+  come through?
+  <h4>Noodles</h4>
+  I'm partial to noodles that still have a tad of a bite when the bowl first comes out so that by the
+  time I'm done they haven't softened too much. The worst sin are noodles that break apart, they should
+  be long and together the entire time I'm eating the bowl.
+  <h4>Meat</h4>
+  Does the meat taste clean and beefy? If it is steak/brisket is it tender, but not dry? Is the tendon
+  cooked enough to be succulent? Are the meatballs seasoned well and have a coarser texture? Typical
+  meat cuts include, but are not limited to:
+  <ul>
+    <li>Tái (Medium Rare Round Steak)</li>
+    <li>Nạm (Flank)</li>
+    <li>Gầu (Brisket)</li>
+    <li>Bò viên (Meatballs)</li>
+    <li>Sách (Tripe)</li>
+    <li>Gân (Tendon)</li>
+  </ul>
+  <h2>Todo List</h2>
+  <p>
+    There are a few things that I plan to add to this website over time. In no particular order they
+    are:
+  </p>
+  <ul>
+    <li>A map showing every location, as well as the project boundary</li>
+    <li>Individual pages for each location showing their rating & price history</li>
+    <li>Details on the components of Phở like:</li>
+    <ul>
+      <li>Types of meat</li>
+      <li>Types of spices</li>
+      <li>Types of noodles</li>
+      <li>How the broth is made</li>
+      <li>General history</li>
+    </ul>
+  </ul>
+</main>
