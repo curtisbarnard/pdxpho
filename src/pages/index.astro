@@ -48,12 +48,12 @@ const title = 'PDX Phở';
 
 <Layout title={title} />
 <main>
-  <h1>PDX Phở</h1>
   <span>Average Price: ${averagePrice}</span>
   <p>
     Of the {locations.length} places serving Phở in Portland I have visted {locationsSorted.length} of
     them. The below list is sorted with the highest rating at the top. Where the rating is the same I
-    have ranked the cheaper bowl higher.
+    have ranked the cheaper bowl higher. Rating values will not be released until I have visited a place
+    at least twice.
   </p>
   <ul>
     {
@@ -79,6 +79,9 @@ const title = 'PDX Phở';
 </main>
 
 <style>
+  main {
+    padding-top: 1rem;
+  }
   ul {
     padding: 0;
   }
