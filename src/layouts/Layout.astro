@@ -26,7 +26,23 @@ const { title } = Astro.props;
     html {
       font-family: system-ui, serif;
       font-size: 1rem;
-      background: hsl(31, 90%, 98%);
+      --alabaster-dark: hsl(76, 10%, 70%);
+      --alabaster: hsl(76, 15%, 86%);
+      --white: hsl(90, 20%, 98%);
+      --black: hsla(78, 88%, 5%, 1);
+      --pink: hsl(0, 29%, 55%);
+      --dark-pink: hsl(0, 35%, 30%);
+
+      background: var(--alabaster);
+      color: var(--black);
+    }
+
+    a {
+      color: var(--dark-pink);
+    }
+
+    a:visited {
+      color: var(--pink);
     }
 
     h1 {
