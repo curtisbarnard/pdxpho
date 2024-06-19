@@ -55,7 +55,7 @@ if (!images[herbsImage])
     border-width: 1px;
     border-style: solid;
     border-radius: 1rem;
-    padding: 2rem;
+    padding: 1rem 2rem;
     background-color: hsl(0, 0%, 100%);
   }
 
@@ -76,6 +76,10 @@ if (!images[herbsImage])
     grid-template-columns: 1fr 1fr;
     justify-items: center;
     align-items: center;
+    padding-top: 1rem;
+  }
+  img {
+    border-radius: 1rem;
   }
 
   @media (max-width: 768px) {
@@ -84,6 +88,7 @@ if (!images[herbsImage])
       grid-template-columns: 1fr;
       justify-items: center;
       align-items: center;
+      row-gap: 1rem;
     }
   }
 </style>
