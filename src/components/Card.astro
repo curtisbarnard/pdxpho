@@ -39,11 +39,17 @@ if (!images[herbsImage])
   <a href={link}><h2>{name} (${price})</h2></a>
   <span><i>Last Visited: {lastVisited}</i></span>
   <div class='images'>
-    <Image src={images[phoImage]()} alt='A bowl of Vietnamese beef noodle soup' width='325' />
+    <Image
+      src={images[phoImage]()}
+      alt='A bowl of Vietnamese beef noodle soup'
+      width='375'
+      height='375'
+    />
     <Image
       src={images[herbsImage]()}
       alt='A plate of herbs used to top beef noodle soup'
-      width='325'
+      width='375'
+      height='375'
     />
   </div>
   <p>{notes}</p>
@@ -74,10 +80,15 @@ if (!images[herbsImage])
     grid-template-columns: 1fr 1fr;
     justify-items: center;
     align-items: center;
+    column-gap: 1rem;
     padding-top: 1rem;
   }
   img {
     border-radius: 1rem;
+    max-width: 375px;
+    max-height: 375px;
+    width: 100%;
+    height: auto;
   }
 
   @media (max-width: 768px) {
