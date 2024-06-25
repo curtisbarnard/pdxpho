@@ -5,13 +5,6 @@
     "link": "https://maps.app.goo.gl/yRBdfELsSwv42t576",
     "coordinates": ""
   },
-
-  {
-    "id": 53,
-    "name": "Annam VL",
-    "link": "https://maps.app.goo.gl/VjAqtv4tyE4qpAav6",
-    "coordinates": ""
-  },
   {
     "id": 2,
     "name": "Bamboo House",
@@ -265,12 +258,6 @@
     "coordinates": ""
   },
   {
-    "id": 52,
-    "name": "The Paper Bridge (Bún Chả Cầu Giấy)",
-    "link": "https://maps.app.goo.gl/ZCZY5wLtgNoN3bLv7",
-    "coordinates": ""
-  },
-  {
     "id": 45,
     "name": "Thiên Hoàng | Vietnamese & Chinese Restaurant",
     "link": "https://maps.app.goo.gl/mergHJpBifJzTE1q6",
@@ -280,12 +267,6 @@
     "id": 46,
     "name": "thơm® Portland",
     "link": "https://maps.app.goo.gl/mn2Uo9y6vhWht55p6",
-    "coordinates": ""
-  },
-  {
-    "id": 47,
-    "name": "Timeout Bar & Grill",
-    "link": "https://maps.app.goo.gl/zR52ocpu2mBMCEhs9",
     "coordinates": ""
   },
   {
@@ -310,6 +291,30 @@
     "id": 51,
     "name": "Yoonique Phở & Grill",
     "link": "https://maps.app.goo.gl/K8oPfjaLcZgFzrcKA",
+    "coordinates": ""
+  },
+  {
+    "id": 52,
+    "name": "The Paper Bridge (Bún Chả Cầu Giấy)",
+    "link": "https://maps.app.goo.gl/ZCZY5wLtgNoN3bLv7",
+    "coordinates": ""
+  },
+  {
+    "id": 53,
+    "name": "Annam VL",
+    "link": "https://maps.app.goo.gl/VjAqtv4tyE4qpAav6",
+    "coordinates": ""
+  },
+  {
+    "id": 54,
+    "name": "Bambuza Vietnam Kitchen - PDX Concourse C & E",
+    "link": "https://maps.app.goo.gl/vXf3kgNMqArP1wv69",
+    "coordinates": ""
+  },
+  {
+    "id": 55,
+    "name": "Thai Orchid Portland",
+    "link": "https://maps.app.goo.gl/Ggn5Z7Jh1BRaDpCQ9",
     "coordinates": ""
   }
 ]
