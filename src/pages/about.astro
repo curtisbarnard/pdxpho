@@ -5,7 +5,7 @@ const title = 'About - PDX Phở';
 
 <Layout title={title} />
 <main>
-  <h2>Origins</h2>
+  <h2 id='#origins'><a href='#'>Origins</a></h2>
   <p>
     This adventure was born out of two points of inspiration: a reddit post and the low quality of
     ratings on Google/Yelp.
@@ -46,7 +46,7 @@ const title = 'About - PDX Phở';
       >
     </footer>
   </blockquote>
-  <h2>Methodology</h2>
+  <h2 id='methodology'><a href='#methodology'>Methodology</a></h2>
   Taking the inspiration above I decided to come up with a method to the madness of visiting all the
   Phở restaurants in Portland.
   <p>
@@ -56,7 +56,7 @@ const title = 'About - PDX Phở';
       qualifications that make me better suited to rate all these restaurants.
     </em>
   </p>
-  <h3>Location</h3>
+  <h3 id='location'><a href='#location'>Location</a></h3>
   <p>
     The restaurant must be located within Portland. Using <a
       href='https://gis-pdx.opendata.arcgis.com/datasets/city-boundaries/explore?location=45.542714%2C-122.654401%2C12.53'
@@ -65,7 +65,7 @@ const title = 'About - PDX Phở';
     to determine if they were within the boundary. While there are plenty more restaurants outside of
     the boundary I've decided to focus on Portland proper in order to make the project feasbile.
   </p>
-  <h3>Phở Type</h3>
+  <h3 id='pho-type'><a href='#pho-type'>Phở Type</a></h3>
   <p>
     For now the goal is to only include Phở Bò (beef phở) as this is the most widespread type. While
     there is chicken and vegetarian it is not common enough to warrant inclusion at this time,
@@ -77,7 +77,7 @@ const title = 'About - PDX Phở';
     is an option, but the price on the menu only shows one price I get whater size that is and will
     note it in the review.
   </p>
-  <h3>Rating Categories</h3>
+  <h3 id='rating-categories'><a href='#rating-categories'>Rating Categories</a></h3>
   <p>
     There are five categories that I rate a bowl on, all are rated on a scale of 0-5 with 5 being
     the best. I do not take the environment/vibe, customer service or value into account. My rating
@@ -88,7 +88,7 @@ const title = 'About - PDX Phở';
     hoison/sriracha sauce. I might tweak the rating while eating the rest of the bowl, but typically
     I do not.
   </p>
-  <h4>Herbs</h4>
+  <h4 id='herbs'><a href='#herbs'>Herbs</a></h4>
   I'm looking for the freshness of the herbs and that a proper quantity is provided. The herbs category
   includes:
   <ul>
@@ -97,18 +97,18 @@ const title = 'About - PDX Phở';
     <li>Jalapeno</li>
     <li>Lime</li>
   </ul>
-  <h4>Aroma</h4>
+  <h4 id='aroma'><a href='#aroma'>Aroma</a></h4>
   How does the broth smell? I'll generally mix up the bowl to help release the aroma. Is it beefy enough,
   but still clean? What spices stick out. I typically lean towards a more clove forward broth rather
   than cinnamon.
-  <h4>Flavor</h4>
+  <h4 id='flavor'><a href='#flavor'>Flavor</a></h4>
   Does the broth hade a deep beefy flavor? Is it too sweet, salty or bitter? Does the flavor of the spices
   come through?
-  <h4>Noodles</h4>
+  <h4 id='noodles'><a href='#noodles'>Noodles</a></h4>
   I'm partial to noodles that still have a tad of a bite when the bowl first comes out so that by the
   time I'm done they haven't softened too much. The worst sin are noodles that break apart, they should
   be long and together the entire time I'm eating the bowl.
-  <h4>Meat</h4>
+  <h4 id='meat'><a href='#meat'>Meat</a></h4>
   Does the meat taste clean and beefy? If it is steak/brisket is it tender, but not dry? Is the tendon
   cooked enough to be succulent? Are the meatballs seasoned well and have a coarser texture? Typical
   meat cuts include, but are not limited to:
@@ -120,7 +120,7 @@ const title = 'About - PDX Phở';
     <li>Sách (Tripe)</li>
     <li>Gân (Tendon)</li>
   </ul>
-  <h2>Todo List</h2>
+  <h2 id='todo-list'><a href='#todo-list'>Todo List</a></h2>
   <p>
     There are a few things that I plan to add to this website over time. In no particular order they
     are:
@@ -153,5 +153,11 @@ const title = 'About - PDX Phở';
   h3,
   h4 {
     margin-bottom: 0.25rem;
+  }
+  h2 a,
+  h3 a,
+  h4 a {
+    color: var(--black);
+    text-decoration: none;
   }
 </style>
