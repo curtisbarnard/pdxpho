@@ -13,8 +13,8 @@
   },
   {
     "id": 3,
-    "name": "Bambuza Vietnam Kitchen - South Waterfront",
-    "link": "https://maps.app.goo.gl/GUe3AZ4mMhA65PzW6",
+    "name": "Bambuza Vietnam Kitchen - PDX Concourse C & E",
+    "link": "https://maps.app.goo.gl/JPCbR3V5uqHvFsDg7",
     "coordinates": ""
   },
   {
@@ -315,6 +315,12 @@
     "id": 55,
     "name": "Thai Orchid Portland",
     "link": "https://maps.app.goo.gl/Ggn5Z7Jh1BRaDpCQ9",
+    "coordinates": ""
+  },
+  {
+    "id": 56,
+    "name": "Friendship Kitchen",
+    "link": "https://maps.app.goo.gl/e2wqVWoGyoB3Dbhe7",
     "coordinates": ""
   }
 ]
