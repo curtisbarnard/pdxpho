@@ -274,5 +274,65 @@
     "price": 16.45,
     "notes": "The basil is bruised, but the sprouts, lime, and jalapeño are all fresh. The jalapeño still has its veins and seeds. The brisket and tai are a little dry but taste clean. The meatballs have a good texture but an odd starchy flavor. The noodles are falling apart and completely overcooked. The aroma is clove and cinnamon forward, but mostly cinnamon. The flavor is too sweet with not much beefiness.",
     "googleRating": 4.6
+  },
+  {
+    "name": "Little Saigon Noodles & Grill",
+    "dateVisited": "2024-7-9",
+    "herbs": 2,
+    "aroma": 2,
+    "flavor": 2,
+    "noodles": 3,
+    "meat": 3,
+    "price": 18,
+    "notes": "The aroma is pretty light, with a hint of clove and cinnamon. The flavor is very light and a bit oily. The noodles aren't al dente but aren't falling apart either. The round is tender and clean, while the brisket is dry. The meatball is okay. The basil is pretty bruised, but the bean sprouts are good.",
+    "googleRating": 4.4
+  },
+  {
+    "name": "The Boiling Bowl",
+    "dateVisited": "2024-7-18",
+    "herbs": 4,
+    "aroma": 2,
+    "flavor": 2,
+    "noodles": 2,
+    "meat": 3,
+    "price": 16.95,
+    "notes": "The basil is a little bruised, but the bean sprouts, lime, and jalapeño are in good condition. The aroma is funky and beefy, with no noticeable spices. The flavor is sweet, also lacking in spices. The noodles are breaking apart. The meatballs are coarse but springy and pretty good. The tai is tender and clean, while the flank is really tough. The brisket is good but a bit dry, and the tendon is cooked well.",
+    "googleRating": 4.5
+  },
+  {
+    "name": "Tèo Bun Bo Hue",
+    "dateVisited": "2024-7-29",
+    "herbs": 4,
+    "aroma": 3,
+    "flavor": 3,
+    "noodles": 2,
+    "meat": 3,
+    "price": 17.5,
+    "notes": "The herbs are really fresh, and it comes with culantro. The aroma is mild with hints of clove and cinnamon. The flavor has a good saltiness and is lighter, but I wish there was more beef character. The noodles are too soft for my liking and just on the cusp of breaking apart. The tai is really good, as are the meatballs. The tai and flank are tender, though the flank has a slightly irony taste. The tendon isn't cooked enough and is too hard for my taste.",
+    "googleRating": 4.4
+  },
+  {
+    "name": "Friendship Kitchen",
+    "dateVisited": "2024-8-5",
+    "herbs": 2,
+    "aroma": 3,
+    "flavor": 2,
+    "noodles": 2,
+    "meat": 2,
+    "price": 18,
+    "notes": "The basil is a little bruised, and the bean sprouts are broken, wilted, and discolored. The lime and jalapeño are okay. The aroma has clove and a bit of beefiness. The flavor is really sweet. The noodles are overcooked and starting to fall apart. The brisket has a decent texture but is a bit bland in flavor, while the tai is cut thicker than most other places and has a slight off flavor.",
+    "googleRating": 4.6
+  },
+  {
+    "name": "Bánh Mì Nam Lộc",
+    "dateVisited": "2024-8-10",
+    "herbs": 1,
+    "aroma": 2,
+    "flavor": 3,
+    "noodles": 3,
+    "meat": 3,
+    "price": 16.75,
+    "notes": "The basil is heavily bruised, and there are a few pieces of discolored bean sprouts. The jalapeño and lime are fine. The aroma is really mild with just a hint of pepper. The flavor is very different from most places, with a sweet and white pepper-forward taste, lacking the usual cinnamon or clove. The noodles are soft but not breaking apart. The tai is pretty good, but the flank is tough and dry. The meatballs are okay, with a strong pepper flavor.",
+    "googleRating": 4.3
   }
 ]
