@@ -270,12 +270,6 @@
     "coordinates": ""
   },
   {
-    "id": 48,
-    "name": "Utopia Restaurant & Lounge",
-    "link": "https://maps.app.goo.gl/aYDthKyNpRBQLCGTA",
-    "coordinates": ""
-  },
-  {
     "id": 49,
     "name": "Van Hanh Restaurant - Vegan & Vegetarian Cuisine",
     "link": "https://maps.app.goo.gl/h8VRyRtEcbPoqEvV8",
@@ -306,12 +300,6 @@
     "coordinates": ""
   },
   {
-    "id": 54,
-    "name": "Bambuza Vietnam Kitchen - PDX Concourse C & E",
-    "link": "https://maps.app.goo.gl/vXf3kgNMqArP1wv69",
-    "coordinates": ""
-  },
-  {
     "id": 55,
     "name": "Thai Orchid Portland",
     "link": "https://maps.app.goo.gl/Ggn5Z7Jh1BRaDpCQ9",
@@ -321,6 +309,12 @@
     "id": 56,
     "name": "Friendship Kitchen",
     "link": "https://maps.app.goo.gl/e2wqVWoGyoB3Dbhe7",
+    "coordinates": ""
+  },
+  {
+    "id": 57,
+    "name": "Vivi's Yummy Rolls",
+    "link": "https://maps.app.goo.gl/qNtUPCS2LYfBWaB49",
     "coordinates": ""
   }
 ]
