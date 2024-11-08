@@ -334,5 +334,65 @@
     "price": 16.75,
     "notes": "The basil is heavily bruised, and there are a few pieces of discolored bean sprouts. The jalapeño and lime are fine. The aroma is really mild with just a hint of pepper. The flavor is very different from most places, with a sweet and white pepper-forward taste, lacking the usual cinnamon or clove. The noodles are soft but not breaking apart. The tai is pretty good, but the flank is tough and dry. The meatballs are okay, with a strong pepper flavor.",
     "googleRating": 4.3
+  },
+  {
+    "name": "Phở Oregon Restaurant",
+    "dateVisited": "2024-8-24",
+    "herbs": 3,
+    "aroma": 4,
+    "flavor": 3,
+    "noodles": 3,
+    "meat": 4,
+    "price": 18,
+    "notes": "The bean sprouts are clean, but the basil and culantro are a bit bruised. The aroma is clove-forward, and the flavor matches, being slightly salty without too much sweetness. It has a good texture overall. The noodles are cooked a little more than I'd prefer. The meat is all pretty good, with the tendon and meatballs standing out, and the fatty brisket is also quite good.",
+    "googleRating": 4.4
+  },
+  {
+    "name": "Pho Korner",
+    "dateVisited": "2024-9-23",
+    "herbs": 3,
+    "aroma": 3,
+    "flavor": 3,
+    "noodles": 3,
+    "meat": 4,
+    "price": 17.5,
+    "notes": "The price is for a large. The aroma is mild, mainly beefy with hints of star anise and clove, but there's very little spice overall. The flavor has a good beefiness, though it's perhaps a tad too sweet. The noodles are cooked more than I'd like, but they're not falling apart. All the meat tastes clean, and the tai and fatty brisket aren’t too dry. The tripe is particularly good. The bean sprouts are broken and a bit off-white, with culantro and cilantro served on the side.",
+    "googleRating": 4.5
+  },
+  {
+    "name": "Phở DaLat Restaurant",
+    "dateVisited": "2024-10-4",
+    "herbs": 3,
+    "aroma": 3,
+    "flavor": 4,
+    "noodles": 5,
+    "meat": 2,
+    "price": 16.95,
+    "notes": "The bean sprouts are a little wilted and off-white, with only a small amount of basil provided, and it comes with chili oil. The aroma is very beefy with no noticeable spice, and the flavor follows suit, having good depth and savoriness. The noodles are cooked perfectly, with just the right amount of bite and no sticking or breaking apart. The fatty brisket is super tender, while the meatballs and tai are just okay, with the tai having a slight sweetness that isn’t pleasant. The tripe is good and fairly clean, but it’s missing tendon and well-done brisket (nam).",
+    "googleRating": 4.2
+  },
+  {
+    "name": "HA VL Vietnamese Noodle Soup",
+    "dateVisited": "2024-10-6",
+    "herbs": 4,
+    "aroma": 3,
+    "flavor": 3,
+    "noodles": 2,
+    "meat": 4,
+    "price": 17,
+    "notes": "The bean sprouts are really fresh, and the basil is in good condition with only a few small bruises. It’s not very aromatic, with just a hint of cinnamon. The flavor is sweet with a touch of cinnamon, not particularly beefy but has some umami. The noodles are clumping, breaking, and too soft. The meatballs are pretty good, and the loin is tender, clean, and beefy.",
+    "googleRating": 4.7
+  },
+  {
+    "name": "Jade Teahouse",
+    "dateVisited": "2024-10-21",
+    "herbs": 2,
+    "aroma": 3,
+    "flavor": 2,
+    "noodles": 1,
+    "meat": 3,
+    "price": 15,
+    "notes": "The noodles are clumping and falling apart from being overcooked. The flavor is too sweet and salty, with an aroma that's very cinnamon-forward, followed by clove. The bean sprouts look okay, but the basil is heavily bruised, and there’s no jalapeño. The meat tastes good, though the steak is cut thick and is tough. The brisket is decent.",
+    "googleRating": 4.6
   }
 ]
