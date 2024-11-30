@@ -394,5 +394,53 @@
     "price": 15,
     "notes": "The noodles are clumping and falling apart from being overcooked. The flavor is too sweet and salty, with an aroma that's very cinnamon-forward, followed by clove. The bean sprouts look okay, but the basil is heavily bruised, and there’s no jalapeño. The meat tastes good, though the steak is cut thick and is tough. The brisket is decent.",
     "googleRating": 4.6
+  },
+  {
+    "name": "Thang Long Cuisine",
+    "dateVisited": "2024-11-12",
+    "herbs": 3,
+    "aroma": 4,
+    "flavor": 4,
+    "noodles": 2,
+    "meat": 2,
+    "price": 18,
+    "notes": "The pho has a cinnamon-forward aroma with hints of clove and a sweet beefiness. The flavor is rich and beefy, not too sweet or salty. Bean sprouts are long and fresh, basil leaves are large but some are bruised, and the lime and jalapeño are fine. The noodles are wider, which I like, but overcooked for my taste. The tai is good, but the well-done brisket is grainy and overcooked. The oxtail and fatty brisket are tough, the meatball tastes stale, and the tendon isn’t as tender as I prefer. Price is for a small bowl.",
+    "googleRating": 4.6
+  },
+  {
+    "name": "Short Round / Crying Tigers",
+    "dateVisited": "2024-11-21",
+    "herbs": 4,
+    "aroma": 3,
+    "flavor": 2,
+    "noodles": 3,
+    "meat": 3,
+    "price": 16,
+    "notes": "I got the filet and meatball pho. The broth has a strong clove aroma with sweet, sour, and slightly salty flavors. The noodles are softer than I prefer but hold together without breaking. The filet is cut thick but is tender and not dry. The meatballs are okay—heavily emulsified and with tendon chunks. The herbs are very fresh, with unbruised basil and cilantro. The bean sprouts are full, white, and intact, and the lime and jalapeño look good.",
+    "googleRating": 4.6
+  },
+  {
+    "name": "Pho Le Nguyen",
+    "dateVisited": "2024-11-22",
+    "herbs": 3,
+    "aroma": 4,
+    "flavor": 3,
+    "noodles": 3,
+    "meat": 3,
+    "price": 15.95,
+    "notes": "The noodles are overcooked but still hold together. The broth has a beefy and cinnamon aroma, but the flavor is thin, resembling a Western beef stock with cinnamon notes. The basil is slightly bruised, but the bean sprouts are plump, white, and unbroken. Lime and jalapeño are fresh. The *tai* is dry and tough, but the flank and fatty brisket are tender and well-cooked. The meatballs are well-emulsified, slightly sweet, and have good chunks of tendon. The tripe tastes clean, and the tendon is soft and nicely done.",
+    "googleRating": 4.8
+  },
+  {
+    "name": "Phở Gia",
+    "dateVisited": "2024-11-24",
+    "herbs": 4,
+    "aroma": 2,
+    "flavor": 2,
+    "noodles": 2,
+    "meat": 3,
+    "price": 18.11,
+    "notes": "The basil is crisp and unbruised, and the bean sprouts are full and intact. Lime and jalapeño are fresh. The broth has a clove and anise aroma with a noticeable sweetness. The flavor is very sweet and salty but backed by solid beefiness. The noodles have a good bite but tend to clump. The meatball is very soft with a strong white pepper flavor. The *tai* has good texture but doesn’t taste particularly fresh. The brisket is flavorful and well-cooked, while the flank is a bit dry. The tripe has a pleasant beefiness, and the tendon is soft and well-cooked. Price is $17.50, but they have a CC processing fee.",
+    "googleRating": 4.1
   }
 ]
