@@ -9,7 +9,8 @@
     "meat": 4,
     "price": 16.5,
     "notes": "The broth was sweet but somewhat shallow in flavor and a bit salty. Although the serving of basil was small, all the ingredients were fresh.",
-    "googleRating": 4.8
+    "googleRating": 4.8,
+    "category": ""
   },
   {
     "name": "Pho Van 82nd",
@@ -21,7 +22,8 @@
     "meat": 4,
     "price": 15.95,
     "notes": "The tai is really good, and the noodles have a great texture. The broth is mild and safe, with a noticeable cinnamon-forward flavor. The bowl is quite small, and the dac biet comes with meatballs.",
-    "googleRating": 4.4
+    "googleRating": 4.4,
+    "category": ""
   },
   {
     "name": "The Paper Bridge (Bún Chả Cầu Giấy)",
@@ -33,7 +35,8 @@
     "meat": 3,
     "price": 24,
     "notes": "There were no herbs, just garlic sauce and a fried donut. The noodles were silky.",
-    "googleRating": 4
+    "googleRating": 4,
+    "category": ""
   },
   {
     "name": "Bamboo House",
@@ -45,7 +48,8 @@
     "meat": 2,
     "price": 17,
     "notes": "The bean sprouts were a little stringy, and the broth had a prominent clove flavor. The noodles were not al dente, but not falling apart. The meat was too dry, but the meatballs had a good beefy flavor. I forgot to take a photo before eating the bowl.",
-    "googleRating": 4.5
+    "googleRating": 4.5,
+    "category": ""
   },
   {
     "name": "Pho Hung on 82nd",
@@ -57,7 +61,8 @@
     "meat": 2,
     "price": 16.5,
     "notes": "The noodles are too soft but aren't breaking apart. The meatballs are bland, and the tai and nam are a little dry. The tripe tastes dirtier than at other places. The price is for a small bowl. ",
-    "googleRating": 4.4
+    "googleRating": 4.4,
+    "category": ""
   },
   {
     "name": "Hanoi Kitchen",
@@ -69,7 +74,8 @@
     "meat": 2,
     "price": 14,
     "notes": "The noodles are soft but not breaking apart. The broth isn't very deep in flavor but is cinnamon-forward. The meat was bland.",
-    "googleRating": 4.4
+    "googleRating": 4.4,
+    "category": ""
   },
   {
     "name": "Pho 503",
@@ -81,7 +87,8 @@
     "meat": 3,
     "price": 17,
     "notes": "The dish was skimpy on the bean sprouts and jalapeños. It had a beef-forward aroma with not much spice. The broth was too salty and sweet, though it had a good beef flavor. The noodles were too spongy, and the flank had a slightly off flavor.",
-    "googleRating": 4.3
+    "googleRating": 4.3,
+    "category": ""
   },
   {
     "name": "Phở MeKha Restaurant",
@@ -93,7 +100,8 @@
     "meat": 3,
     "price": 20.95,
     "notes": "The basil was not in the best condition. The tripe was cooked well, though a big chunk was not shredded. The brisket was a bit dry and lacked flavor. The tai was pretty good, as were the meatballs. The noodles were cooked perfectly.",
-    "googleRating": 4.5
+    "googleRating": 4.5,
+    "category": ""
   },
   {
     "name": "Luc Lac Vietnamese Kitchen",
@@ -105,7 +113,8 @@
     "meat": 2,
     "price": 18.5,
     "notes": "The bean sprouts were wilted, and there was barely any basil. The tripe was funky, but the tendon was good. The flank was tough. The broth was really sweet and not very deep, with a clove-forward aroma.",
-    "googleRating": 4.5
+    "googleRating": 4.5,
+    "category": ""
   },
   {
     "name": "NO NAME PHO",
@@ -117,7 +126,8 @@
     "meat": 3,
     "price": 15.99,
     "notes": "The noodles were sticking together a little bit. The broth aroma didn't lean towards any particular spice and was pretty sweet, not very beefy or deep. The meatballs were bland, but the tai and brisket were decent.",
-    "googleRating": 4.6
+    "googleRating": 4.6,
+    "category": ""
   },
   {
     "name": "Cuốn - Vietnamese Street Food",
@@ -129,7 +139,8 @@
     "meat": 4,
     "price": 17.5,
     "notes": "The aroma has a good hint of cinnamon and clove, but it's not overwhelming. The flavor is a tad salty and could use a little more beefiness, but it's pretty well balanced. The noodles are good, perhaps just a tad less cooked. The meatballs are good, and the other meat is decent and clean. The bean sprouts were not in the best condition.",
-    "googleRating": 4.7
+    "googleRating": 4.7,
+    "category": ""
   },
   {
     "name": "An An",
@@ -141,7 +152,8 @@
     "meat": 2,
     "price": 18,
     "notes": "It's a beef rib pho with a very clove-forward aroma. The broth is sweet and sour but needs to be more salty and beefy. The noodles are sticking together and breaking, but still a little al dente. The beef is not tender enough, rather chewy, but the flavor is okay.",
-    "googleRating": 4.8
+    "googleRating": 4.8,
+    "category": ""
   },
   {
     "name": "Phở Kim",
@@ -153,7 +165,8 @@
     "meat": 3,
     "price": 16.5,
     "notes": "The bean sprouts are a little old and wilted. The aroma isn't very strong but is mainly beefy, with balanced spices and nothing sticking out. The flavor has a good beefiness with no intense spices, leaning more towards salty than sweet. The noodles are cooked too much, not al dente, and falling apart a little. The meat is all clean and well-cooked, but nothing stands out.",
-    "googleRating": 4.4
+    "googleRating": 4.4,
+    "category": ""
   },
   {
     "name": "Pho Bar 405",
@@ -165,7 +178,8 @@
     "meat": 3,
     "price": 17.95,
     "notes": "The aroma and flavor have good beefiness, with clove in the aroma. The flavor is balanced, with no spice standing out. The noodles are overcooked and falling apart, lacking bite. The meat is okay, with the brisket being tough and the meatballs sweet.",
-    "googleRating": 4.5
+    "googleRating": 4.5,
+    "category": ""
   },
   {
     "name": "Pho Van Fresh",
@@ -177,7 +191,8 @@
     "meat": 3,
     "price": 16.95,
     "notes": "It's an extra $4 if you want meatball or tripe, but I just got the standard. The basil has bug holes, and the bean sprouts are a little old. The noodles are overcooked and breaking apart. The aroma is good, pretty beefy with no spice standing out. The flavor is very beef consommé-like, without any discernible spices. It doesn't seem like pho. The tai is good, the brisket has good flavor, and the flank is okay.",
-    "googleRating": 4.4
+    "googleRating": 4.4,
+    "category": ""
   },
   {
     "name": "V Lounge & Restaurant",
@@ -189,7 +204,8 @@
     "meat": 2,
     "price": 19,
     "notes": "Only available in large for dac biet. The basil is a little wilted, with a couple of bean sprouts wilted or molded. The aroma is very beefy, with not a lot of spice. The flavor follows suit. The noodles are completely overcooked and falling apart. The meatballs and tai are meh, while the flank is tough. The tripe is nice and clean, the tendon cooked well, and the brisket has good flavor.",
-    "googleRating": 4.4
+    "googleRating": 4.4,
+    "category": ""
   },
   {
     "name": "Chi em MeKha Grill",
@@ -201,7 +217,8 @@
     "meat": 4,
     "price": 21,
     "notes": "The basil is a little bruised, and the bean sprouts look a bit old. The aroma isn't very strong but leads with cloves. The flavor isn't super meaty, rather light. The noodles are cooked a little more than I want, not al dente. The tripe is tender and has a good flavor. The tai is very rare with a clean flavor. The meatballs are well-emulsified with a garlic black pepper note. The brisket is sliced very thin and pretty good.",
-    "googleRating": 4.9
+    "googleRating": 4.9,
+    "category": ""
   },
   {
     "name": "Bun and Pho House",
@@ -213,7 +230,8 @@
     "meat": 3,
     "price": 16.5,
     "notes": "The bean sprouts are really fresh, and the basil is in pretty good condition. The aroma is beefy, with not a lot of spice; clove is the most forward. The flavor has a decent beefiness to it. The noodles are nice and al dente. All the meat tastes pretty clean, though the tendon is not cooked quite enough.",
-    "googleRating": 4.5
+    "googleRating": 4.5,
+    "category": ""
   },
   {
     "name": "Koi Gardens Vietnamese Cuisine",
@@ -225,7 +243,8 @@
     "meat": 4,
     "price": 15.95,
     "notes": "The aroma is very mild, with cinnamon standing out the most. The flavor is also mild, but a bit too sweet. The noodles are cooked well, and all the meat tastes fresh. The tai is maybe a little tough. The herbs are pretty fresh, with the basil showing a tiny bit of bruising. The price is for a large serving.",
-    "googleRating": 4.7
+    "googleRating": 4.7,
+    "category": ""
   },
   {
     "name": "thơm® Portland",
@@ -237,7 +256,8 @@
     "meat": 3,
     "price": 17,
     "notes": "The noodles are chewy but not breaking apart. The aroma has a little clove with beefiness. The flavor is a little too sweet, with not much spice. The meatballs have good flavor and texture, but the brisket is a little dry. The basil is bruised, the bean sprouts are good, and the lime looks a little bruised and old.",
-    "googleRating": 4.8
+    "googleRating": 4.8,
+    "category": ""
   },
   {
     "name": "Pho Saigon Xua LLC",
@@ -249,7 +269,8 @@
     "meat": 4,
     "price": 18.5,
     "notes": "The bean sprouts are really fresh, and the basil is in good condition. The centers of the jalapeños are missing, and the limes are a tiny bit bruised. The noodles are breaking but don't seem to be really overcooked; they still have a little bite. The aroma has a funky beefiness with not a lot of spice, and the broth is pretty sweet. All the meat tastes clean and is pretty good. The tripe is clean, the tendon is cooked well, but the brisket and tai are dry.",
-    "googleRating": 4.1
+    "googleRating": 4.1,
+    "category": ""
   },
   {
     "name": "Phở Hùng on Powell",
@@ -260,8 +281,9 @@
     "noodles": 4,
     "meat": 4,
     "price": 18,
-    "notes": "The basil is bruised and a little limp, and the bean sprouts are browning and a bit old. The aroma is clove-forward with a clean beefiness. The flavor is mild, not very beefy, and tastes a little like MSG. The noodles are cooked a bit more than I'd like but aren't falling apart. The meat is good, especially the tendon and brisket, while the meatballs and tai are just okay. Price is for a large bowl.",
-    "googleRating": 4.6
+    "notes": "The basil is bruised and a little limp, and the bean sprouts are browning and a bit old. The aroma is clove-forward with a clean beefiness. The flavor is mild, not very beefy, and tastes a little like MSG. The noodles are cooked a bit more than I'd like but aren't falling apart. The meat is good, especially the tendon and brisket, while the meatballs and tai are just okay.",
+    "googleRating": 4.6,
+    "category": ""
   },
   {
     "name": "XinhXinh Vietnamese Bistro",
@@ -273,7 +295,8 @@
     "meat": 2,
     "price": 16.45,
     "notes": "The basil is bruised, but the sprouts, lime, and jalapeño are all fresh. The jalapeño still has its veins and seeds. The brisket and tai are a little dry but taste clean. The meatballs have a good texture but an odd starchy flavor. The noodles are falling apart and completely overcooked. The aroma is clove and cinnamon forward, but mostly cinnamon. The flavor is too sweet with not much beefiness.",
-    "googleRating": 4.6
+    "googleRating": 4.6,
+    "category": ""
   },
   {
     "name": "Little Saigon Noodles & Grill",
@@ -285,7 +308,8 @@
     "meat": 3,
     "price": 18,
     "notes": "The aroma is pretty light, with a hint of clove and cinnamon. The flavor is very light and a bit oily. The noodles aren't al dente but aren't falling apart either. The round is tender and clean, while the brisket is dry. The meatball is okay. The basil is pretty bruised, but the bean sprouts are good.",
-    "googleRating": 4.4
+    "googleRating": 4.4,
+    "category": ""
   },
   {
     "name": "The Boiling Bowl",
@@ -297,7 +321,8 @@
     "meat": 3,
     "price": 16.95,
     "notes": "The basil is a little bruised, but the bean sprouts, lime, and jalapeño are in good condition. The aroma is funky and beefy, with no noticeable spices. The flavor is sweet, also lacking in spices. The noodles are breaking apart. The meatballs are coarse but springy and pretty good. The tai is tender and clean, while the flank is really tough. The brisket is good but a bit dry, and the tendon is cooked well.",
-    "googleRating": 4.5
+    "googleRating": 4.5,
+    "category": ""
   },
   {
     "name": "Tèo Bun Bo Hue",
@@ -309,7 +334,8 @@
     "meat": 3,
     "price": 17.5,
     "notes": "The herbs are really fresh, and it comes with culantro. The aroma is mild with hints of clove and cinnamon. The flavor has a good saltiness and is lighter, but I wish there was more beef character. The noodles are too soft for my liking and just on the cusp of breaking apart. The tai is really good, as are the meatballs. The tai and flank are tender, though the flank has a slightly irony taste. The tendon isn't cooked enough and is too hard for my taste.",
-    "googleRating": 4.4
+    "googleRating": 4.4,
+    "category": ""
   },
   {
     "name": "Friendship Kitchen",
@@ -321,7 +347,8 @@
     "meat": 2,
     "price": 18,
     "notes": "The basil is a little bruised, and the bean sprouts are broken, wilted, and discolored. The lime and jalapeño are okay. The aroma has clove and a bit of beefiness. The flavor is really sweet. The noodles are overcooked and starting to fall apart. The brisket has a decent texture but is a bit bland in flavor, while the tai is cut thicker than most other places and has a slight off flavor.",
-    "googleRating": 4.6
+    "googleRating": 4.6,
+    "category": ""
   },
   {
     "name": "Bánh Mì Nam Lộc",
@@ -333,7 +360,8 @@
     "meat": 3,
     "price": 16.75,
     "notes": "The basil is heavily bruised, and there are a few pieces of discolored bean sprouts. The jalapeño and lime are fine. The aroma is really mild with just a hint of pepper. The flavor is very different from most places, with a sweet and white pepper-forward taste, lacking the usual cinnamon or clove. The noodles are soft but not breaking apart. The tai is pretty good, but the flank is tough and dry. The meatballs are okay, with a strong pepper flavor.",
-    "googleRating": 4.3
+    "googleRating": 4.3,
+    "category": ""
   },
   {
     "name": "Phở Oregon Restaurant",
@@ -345,7 +373,8 @@
     "meat": 4,
     "price": 18,
     "notes": "The bean sprouts are clean, but the basil and culantro are a bit bruised. The aroma is clove-forward, and the flavor matches, being slightly salty without too much sweetness. It has a good texture overall. The noodles are cooked a little more than I'd prefer. The meat is all pretty good, with the tendon and meatballs standing out, and the fatty brisket is also quite good.",
-    "googleRating": 4.4
+    "googleRating": 4.4,
+    "category": ""
   },
   {
     "name": "Pho Korner",
@@ -357,7 +386,8 @@
     "meat": 4,
     "price": 17.5,
     "notes": "The price is for a large. The aroma is mild, mainly beefy with hints of star anise and clove, but there's very little spice overall. The flavor has a good beefiness, though it's perhaps a tad too sweet. The noodles are cooked more than I'd like, but they're not falling apart. All the meat tastes clean, and the tai and fatty brisket aren’t too dry. The tripe is particularly good. The bean sprouts are broken and a bit off-white, with culantro and cilantro served on the side.",
-    "googleRating": 4.5
+    "googleRating": 4.5,
+    "category": ""
   },
   {
     "name": "Phở DaLat Restaurant",
@@ -369,7 +399,8 @@
     "meat": 2,
     "price": 16.95,
     "notes": "The bean sprouts are a little wilted and off-white, with only a small amount of basil provided, and it comes with chili oil. The aroma is very beefy with no noticeable spice, and the flavor follows suit, having good depth and savoriness. The noodles are cooked perfectly, with just the right amount of bite and no sticking or breaking apart. The fatty brisket is super tender, while the meatballs and tai are just okay, with the tai having a slight sweetness that isn’t pleasant. The tripe is good and fairly clean, but it’s missing tendon and well-done brisket (nam).",
-    "googleRating": 4.2
+    "googleRating": 4.2,
+    "category": ""
   },
   {
     "name": "HA VL Vietnamese Noodle Soup",
@@ -381,7 +412,8 @@
     "meat": 4,
     "price": 17,
     "notes": "The bean sprouts are really fresh, and the basil is in good condition with only a few small bruises. It’s not very aromatic, with just a hint of cinnamon. The flavor is sweet with a touch of cinnamon, not particularly beefy but has some umami. The noodles are clumping, breaking, and too soft. The meatballs are pretty good, and the loin is tender, clean, and beefy.",
-    "googleRating": 4.7
+    "googleRating": 4.7,
+    "category": ""
   },
   {
     "name": "Jade Teahouse",
@@ -393,7 +425,8 @@
     "meat": 3,
     "price": 15,
     "notes": "The noodles are clumping and falling apart from being overcooked. The flavor is too sweet and salty, with an aroma that's very cinnamon-forward, followed by clove. The bean sprouts look okay, but the basil is heavily bruised, and there’s no jalapeño. The meat tastes good, though the steak is cut thick and is tough. The brisket is decent.",
-    "googleRating": 4.6
+    "googleRating": 4.6,
+    "category": ""
   },
   {
     "name": "Thang Long Cuisine",
@@ -405,7 +438,8 @@
     "meat": 2,
     "price": 18,
     "notes": "The pho has a cinnamon-forward aroma with hints of clove and a sweet beefiness. The flavor is rich and beefy, not too sweet or salty. Bean sprouts are long and fresh, basil leaves are large but some are bruised, and the lime and jalapeño are fine. The noodles are wider, which I like, but overcooked for my taste. The tai is good, but the well-done brisket is grainy and overcooked. The oxtail and fatty brisket are tough, the meatball tastes stale, and the tendon isn’t as tender as I prefer. Price is for a small bowl.",
-    "googleRating": 4.6
+    "googleRating": 4.6,
+    "category": ""
   },
   {
     "name": "Short Round / Crying Tigers",
@@ -417,7 +451,8 @@
     "meat": 3,
     "price": 16,
     "notes": "I got the filet and meatball pho. The broth has a strong clove aroma with sweet, sour, and slightly salty flavors. The noodles are softer than I prefer but hold together without breaking. The filet is cut thick but is tender and not dry. The meatballs are okay—heavily emulsified and with tendon chunks. The herbs are very fresh, with unbruised basil and cilantro. The bean sprouts are full, white, and intact, and the lime and jalapeño look good.",
-    "googleRating": 4.6
+    "googleRating": 4.6,
+    "category": ""
   },
   {
     "name": "Pho Le Nguyen",
@@ -429,7 +464,8 @@
     "meat": 3,
     "price": 15.95,
     "notes": "The noodles are overcooked but still hold together. The broth has a beefy and cinnamon aroma, but the flavor is thin, resembling a Western beef stock with cinnamon notes. The basil is slightly bruised, but the bean sprouts are plump, white, and unbroken. Lime and jalapeño are fresh. The *tai* is dry and tough, but the flank and fatty brisket are tender and well-cooked. The meatballs are well-emulsified, slightly sweet, and have good chunks of tendon. The tripe tastes clean, and the tendon is soft and nicely done.",
-    "googleRating": 4.8
+    "googleRating": 4.8,
+    "category": ""
   },
   {
     "name": "Phở Gia",
@@ -441,6 +477,111 @@
     "meat": 3,
     "price": 18.11,
     "notes": "The basil is crisp and unbruised, and the bean sprouts are full and intact. Lime and jalapeño are fresh. The broth has a clove and anise aroma with a noticeable sweetness. The flavor is very sweet and salty but backed by solid beefiness. The noodles have a good bite but tend to clump. The meatball is very soft with a strong white pepper flavor. The *tai* has good texture but doesn’t taste particularly fresh. The brisket is flavorful and well-cooked, while the flank is a bit dry. The tripe has a pleasant beefiness, and the tendon is soft and well-cooked. Price is $17.50, but they have a CC processing fee.",
-    "googleRating": 4.1
+    "googleRating": 4.1,
+    "category": ""
+  },
+  {
+    "name": "Honey Jar Cafe",
+    "dateVisited": "2024-12-18",
+    "herbs": 2,
+    "aroma": 2,
+    "flavor": 2,
+    "noodles": 3,
+    "meat": 3,
+    "price": 15,
+    "notes": "This is not phở bò. The aroma is heavy on garlic and shrimp, and the flavor leans more porky than beefy with a strong sweetness and lots of garlic. I had to ask for herbs. The bean sprouts are full and white, though some pieces are brown. The basil is slightly limp and bruised. The noodles lack bite but don’t clump or break apart. The meatballs are sweet, bouncy, and heavily emulsified with little tendon. Another cut, possibly round, is thick but tender and not too dry. This isn’t Vietnamese phở bò, and the rating reflects that, but the broth is good, and I’d order it again.",
+    "googleRating": 4.5,
+    "category": ""
+  },
+  {
+    "name": "Pho 39",
+    "dateVisited": "2024-12-27",
+    "herbs": 3,
+    "aroma": 3,
+    "flavor": 2,
+    "noodles": 4,
+    "meat": 2,
+    "price": 18.75,
+    "notes": "The basil is bruised, but the bean sprouts are full and white. It looks like they use serrano peppers instead of jalapeño. The broth's aroma is heavy on cinnamon and clove with a sour, lime-like note but not much beefiness. The flavor is light, sweet, and salty, lacking real depth, with cinnamon and clove dominating. The noodles are well-cooked with a good bite, no clumping or breaking. The tai is decent, but the flank is tough, dry, and mealy. The tripe is okay, though slightly funky. The meatballs are underwhelming, tasting like they have too much starchy filler.",
+    "googleRating": 4.3,
+    "category": ""
+  },
+  {
+    "name": "Thiên Hoàng | Vietnamese & Chinese Restaurant",
+    "dateVisited": "2025-1-2",
+    "herbs": 4,
+    "aroma": 2,
+    "flavor": 2,
+    "noodles": 3,
+    "meat": 2,
+    "price": 16,
+    "notes": "The basil is in good condition with minimal bruising. The bean sprouts are plump and white, and the jalapeño and lime look fresh. The broth's aroma is thin, with a stale ground spice scent of clove, anise, and cinnamon. The flavor is shallow, not very beefy, and more savory than sweet, with muted spices. The noodles are overcooked but not clumping or falling apart. The tai is a bit tough but has a clean taste. The flank is dry and grainy. The meatballs are decent with a noticeable black pepper flavor. The tendon is too hard, undercooked for my liking, but the tripe is well-cooked and clean tasting.",
+    "googleRating": 4.1,
+    "category": ""
+  },
+  {
+    "name": "Cha Lua Deli",
+    "dateVisited": "2025-1-5",
+    "herbs": 3,
+    "aroma": 3,
+    "flavor": 2,
+    "noodles": 3,
+    "meat": 3,
+    "price": 12,
+    "notes": "The basil is in good shape with minimal bruising, but the mung beans are starting to yellow slightly. The jalapeño and lime look fresh. The broth has a beefy aroma with a hint of clove and cinnamon, though it’s not very aromatic overall, and the beefiness has a slight funk. The flavor is very sweet with good beefiness, and clove and cinnamon dominate. The noodles are cooked well with a good bite but clump a little. All the meats have good flavor. The tai is slightly chewy, and the flank is dry and turning grainy. The meatballs have good tendon, a little sweetness, and solid beefiness. This is a to-go order, with the noodles, broth, and onions packed separately to be combined at home.",
+    "googleRating": 4.7,
+    "category": "to-go"
+  },
+  {
+    "name": "Friendship Kitchen NW: Saigon to Singapore",
+    "dateVisited": "2025-1-12",
+    "herbs": 4,
+    "aroma": 2,
+    "flavor": 2,
+    "noodles": 2,
+    "meat": 2,
+    "price": 19,
+    "notes": "The basil, bean sprouts, jalapeño, and lime are all in great condition. The aroma is mildly beefy with a distinct star anise note. The flavor is salty, sour, and very anise-forward. The noodles are clumping and starting to fall apart. The bowl only contains rare steak, even though the menu lists brisket. The steak is thick-cut, slightly chewy, and has an irony flavor but isn’t very beefy. The noodles also have a strong anise taste.",
+    "googleRating": 4.3,
+    "category": ""
+  },
+  {
+    "name": "Annam VL",
+    "dateVisited": "2025-1-25",
+    "herbs": 3,
+    "aroma": 4,
+    "flavor": 4,
+    "noodles": 2,
+    "meat": 3,
+    "price": 17,
+    "notes": "The broth has a sour note for balance. The jalapeño and lime are fresh, while the mung beans are slightly old and discolored but mostly intact. The aroma is strong on anise and clove, with onion notes and a nice underlying beefiness. The flavor is rich with fatty beefiness and green onion, slightly too sweet but not overly so. The noodles are clumping, starting to fall apart, and have a rubbery texture. The meatballs are beefy with a nice pepper note, and I prefer the slicing over quartering or halving. The sirloin is bland and grainy. The shop’s special is pho Annam with sliced sautéed beef, but I ordered pho bac, which is closer to a standard dac biet and used that for the rating.",
+    "googleRating": 4.9,
+    "category": ""
+  },
+  {
+    "name": "Mosaic Taphouse",
+    "dateVisited": "2025-2-22",
+    "herbs": 2,
+    "aroma": 2,
+    "flavor": 2,
+    "noodles": 1,
+    "meat": 3,
+    "price": 16,
+    "notes": "This is a vegan phở. The aroma is heavy on black pepper with a hint of cinnamon and clove. The flavor is dashi-like with strong black pepper, sweetness, and a thick mouthfeel. The noodles are wider than usual, clumping, and completely falling apart. The vegetables—cabbage, bok choy, radish (?), mushroom, and carrot—are cooked well, retaining some crunch. The atsuage is good. The bean sprouts are stringy, but the jalapeño and lime are fresh. No herbs were included.",
+    "googleRating": 4.9,
+    "category": "vegetarian"
+  },
+  {
+    "name": "Butterfly Belly Asian Cuisine",
+    "dateVisited": "2025-3-4",
+    "herbs": 3,
+    "aroma": 2,
+    "flavor": 2,
+    "noodles": 2,
+    "meat": 2,
+    "price": 19,
+    "notes": "The basil, lime, and jalapeño are in great condition, but the bean sprouts are off-white with some browning and greying at the ends. The noodles are overcooked, clumping, and falling apart. The aroma is beefy with no noticeable spice. The flavor is also beefy, salty, and not too sweet, but lacks spice. The meats are all pretty bland. The tripe tastes clean, but the brisket is dry. The meatball has a rough, mealy texture, and the tendon isn’t cooked enough for my liking.",
+    "googleRating": 4.5,
+    "category": ""
   }
 ]
