@@ -1,21 +1,17 @@
 ---
 import { Image } from 'astro:assets';
+import visits from '../data/visits.json';
 
 interface Props {
   locationId: string;
   name: string;
   link: string;
   dateVisited: string;
-  herbs: number;
-  aroma: number;
-  flavor: number;
-  noodles: number;
-  meat: number;
   price: number;
   notes: string;
 }
 
-const { locationId, name, link, dateVisited, herbs, aroma, flavor, noodles, meat, price, notes } =
+const { locationId, name, link, dateVisited, price, notes } =
   Astro.props;
 const lastVisited = new Date(dateVisited).toLocaleDateString('en-us', {
   day: 'numeric',
@@ -23,22 +19,70 @@ const lastVisited = new Date(dateVisited).toLocaleDateString('en-us', {
   month: 'short',
 });
 
+// Find all visits for this location and calculate average rating
+function calculateAverageRating(locationName: string, allVisits: any[]): number | null {
+  const locationVisits = allVisits.filter(visit => visit.name === locationName);
+  
+  if (locationVisits.length < 2) {
+    return null;
+  }
+  
+  // Sort by date (most recent first)
+  locationVisits.sort((a, b) => {
+    const dateA = new Date(a.dateVisited).getTime();
+    const dateB = new Date(b.dateVisited).getTime();
+    return dateB - dateA; // Descending order (most recent first)
+  });
+  
+  // If more than 3 visits, only use the most recent 3
+  const visitsToAverage = locationVisits.length > 3 
+    ? locationVisits.slice(0, 3) 
+    : locationVisits;
+  
+  // Calculate average total rating
+  const totalRatings = visitsToAverage.map(visit => {
+    return visit.herbs + visit.aroma + visit.flavor + visit.noodles + visit.meat;
+  });
+  
+  const sum = totalRatings.reduce((acc, curr) => acc + curr, 0);
+  return sum / visitsToAverage.length;
+}
+
+const averageRating = calculateAverageRating(name, visits);
+
 const images = import.meta.glob<{ default: ImageMetadata }>(
   '/src/images/*.{jpeg,jpg,png,gif,webp}'
 );
 
-const phoImage = '/src/images/' + locationId + 'Av1.webp';
-const herbsImage = '/src/images/' + locationId + 'Bv1.webp';
-const hasPhoImage = images[phoImage];
-const hasHerbsImage = images[herbsImage];
+// Find the highest "visit number" of pho image (Av1, Av2, Av3, etc.)
+function findLatestImage(locationId: string, type: 'A' | 'B', images: Record<string, () => Promise<{ default: ImageMetadata }>>): string | null {
+  for (let visitNumber = 3; visitNumber >= 1; visitNumber--) {
+    const imagePath = `/src/images/${locationId}${type}v${visitNumber}.webp`;
+    if (images[imagePath]) {
+      return imagePath;
+    }
+  }
+  return null;
+}
+
+const phoImage = findLatestImage(locationId, 'A', images);
+const herbsImage = findLatestImage(locationId, 'B', images);
+const hasPhoImage = phoImage && images[phoImage];
+const hasHerbsImage = herbsImage && images[herbsImage];
 ---
 
 <div class='card'>
-  <a href={link}><h2>{name} (${price})</h2></a>
-  <span><i>Last Visited: {lastVisited}</i></span>
+  <a href={link}><h2>{name}</h2></a>
+  <div class='card-details'>
+    {averageRating !== null && (
+      <span class='average-rating'>Rating: {averageRating.toFixed(2)}</span>
+    )}
+    <span class='price'>Price: ${price}</span>
+    <span class='last-visited'><i>Last Visited: {lastVisited}</i></span>
+  </div>
   {(hasPhoImage || hasHerbsImage) && (
     <div class='images'>
-      {hasPhoImage && (
+      {hasPhoImage && phoImage && (
         <Image
           src={images[phoImage]()}
           alt='A bowl of Vietnamese beef noodle soup'
@@ -46,7 +90,7 @@ const hasHerbsImage = images[herbsImage];
           height='375'
         />
       )}
-      {hasHerbsImage && (
+      {hasHerbsImage && herbsImage && (
         <Image
           src={images[herbsImage]()}
           alt='A plate of herbs used to top beef noodle soup'
@@ -79,6 +123,21 @@ const hasHerbsImage = images[herbsImage];
     list-style: none;
   }
 
+  .card-details {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .average-rating {
+    font-weight: 600;
+    background: var(--light-pink);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+  }
+
   .images {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -96,6 +155,12 @@ const hasHerbsImage = images[herbsImage];
   }
 
   @media (max-width: 768px) {
+    .card-details {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.25rem;
+    }
+
     .images {
       display: grid;
       grid-template-columns: 1fr;

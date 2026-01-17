@@ -5,11 +5,18 @@ import locations from '../data/locations.json';
 import visits from '../data/visits.json';
 
 function addVisitsToLocation(locations: any[], visits: any[]) {
-  for (const i in visits) {
-    for (const location of locations) {
-      if (visits[i].name == location.name) {
-        location.visits = visits[i];
-      }
+  for (const location of locations) {
+    // Find all visits for this location
+    const locationVisits = visits.filter(visit => visit.name === location.name);
+    
+    if (locationVisits.length > 0) {
+      // Sort by date (most recent first) and use the most recent visit
+      locationVisits.sort((a, b) => {
+        const dateA = new Date(a.dateVisited).getTime();
+        const dateB = new Date(b.dateVisited).getTime();
+        return dateB - dateA; // Descending order (most recent first)
+      });
+      location.visits = locationVisits[0];
     }
   }
 }
@@ -33,6 +40,7 @@ function sortLocations(locations: any[]) {
   return filtered;
 }
 
+// TODO need to update this to only use the most recent visit for each location, not all visits
 function calculateAveragePrice(visits: any[]) {
   const sum = visits.reduce((acc, curr) => {
     return acc + curr.price;
@@ -64,11 +72,6 @@ const title = 'PDX Phở';
             name={location.name}
             link={location.link}
             dateVisited={location.visits.dateVisited}
-            herbs={location.visits.herbs}
-            aroma={location.visits.aroma}
-            flavor={location.visits.flavor}
-            noodles={location.visits.noodles}
-            meat={location.visits.meat}
             price={location.visits.price}
             notes={location.visits.notes}
           />
