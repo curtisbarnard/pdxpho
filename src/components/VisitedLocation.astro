@@ -50,6 +50,17 @@ chronologicalVisits.forEach((visit, index) => {
   visitNumberMap.set(visit.dateVisited, index + 1); // Visit numbers start at 1
 });
 
+// Prepare data for graphs (chronological order)
+const graphData = chronologicalVisits.map(visit => ({
+  date: new Date(visit.dateVisited).toLocaleDateString('en-us', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  }),
+  totalRating: visit.herbs + visit.aroma + visit.flavor + visit.noodles + visit.meat,
+  price: visit.price,
+}));
+
 // Helper function to find image for a specific visit number
 function findImageForVisit(locationId: string, type: 'A' | 'B', visitNumber: number, images: Record<string, () => Promise<{ default: ImageMetadata }>>): string | null {
   const imagePath = `/src/images/${locationId}${type}v${visitNumber}.webp`;
@@ -62,6 +73,19 @@ function findImageForVisit(locationId: string, type: 'A' | 'B', visitNumber: num
     <h1>{name}</h1>
     <p class="map-link"><a href={link} target="_blank" rel="noopener noreferrer">View on Map <span class="external-link-arrow">↗</span></a></p>
   </header>
+
+  {visits.length >= 2 && (
+    <section class="graphs-section">
+      <div class="graph-container">
+        <h2>Total Rating Over Time</h2>
+        <canvas id="ratingChart"></canvas>
+      </div>
+      <div class="graph-container">
+        <h2>Price Over Time</h2>
+        <canvas id="priceChart"></canvas>
+      </div>
+    </section>
+  )}
 
   {visits.map((visit) => {
     // Get the chronological visit number for this visit
@@ -275,6 +299,31 @@ function findImageForVisit(locationId: string, type: 'A' | 'B', visitNumber: num
     margin: 0;
   }
 
+  .graphs-section {
+    margin: 2rem 0 3rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .graph-container {
+    background-color: var(--white);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: var(--low-shadow);
+  }
+
+  .graph-container h2 {
+    margin: 0 0 1rem 0;
+    font-size: 1.25rem;
+    color: var(--black);
+  }
+
+  .graph-container canvas {
+    max-width: 100%;
+    height: auto;
+  }
+
   @media (max-width: 768px) {
     .images {
       grid-template-columns: 1fr;
@@ -282,6 +331,11 @@ function findImageForVisit(locationId: string, type: 'A' | 'B', visitNumber: num
 
     .stat-grid {
       grid-template-columns: 1fr;
+    }
+
+    .graphs-section {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
     }
 
     header h1 {
@@ -293,4 +347,153 @@ function findImageForVisit(locationId: string, type: 'A' | 'B', visitNumber: num
     }
   }
 </style>
+
+{visits.length >= 2 && (
+  <>
+    <script data-graph-data type="application/json" set:html={JSON.stringify(graphData)}></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" is:inline></script>
+    <script is:inline>
+      (function() {
+        const graphDataScript = document.querySelector('[data-graph-data]');
+        if (!graphDataScript) return;
+        
+        const graphData = JSON.parse(graphDataScript.textContent || '[]');
+        if (graphData.length === 0) return;
+
+        // Wait for Chart.js to load
+        function initCharts() {
+          if (typeof Chart === 'undefined') {
+            setTimeout(initCharts, 100);
+            return;
+          }
+
+          // Get CSS variable values
+          const root = document.documentElement;
+          const Pink = getComputedStyle(root).getPropertyValue('--pink').trim();
+          
+          // Convert HSL to RGB for Chart.js (Chart.js needs RGB format)
+          // Helper function to convert HSL to RGB
+          function hslToRgb(hsl) {
+            // Parse HSL string like "hsl(0, 35%, 30%)"
+            const match = hsl.match(/(\d+),\s*(\d+)%,\s*(\d+)%/);
+            if (!match) return 'rgb(77, 50, 50)'; // fallback
+            const h = parseInt(match[1]) / 360;
+            const s = parseInt(match[2]) / 100;
+            const l = parseInt(match[3]) / 100;
+            
+            let r, g, b;
+            if (s === 0) {
+              r = g = b = l;
+            } else {
+              const hue2rgb = (p, q, t) => {
+                if (t < 0) t += 1;
+                if (t > 1) t -= 1;
+                if (t < 1/6) return p + (q - p) * 6 * t;
+                if (t < 1/2) return q;
+                if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+                return p;
+              };
+              const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+              const p = 2 * l - q;
+              r = Math.round(hue2rgb(p, q, h + 1/3) * 255);
+              g = Math.round(hue2rgb(p, q, h) * 255);
+              b = Math.round(hue2rgb(p, q, h - 1/3) * 255);
+            }
+            return `rgb(${r}, ${g}, ${b})`;
+          }
+          
+          const borderColor = hslToRgb(Pink);
+          const backgroundColor = borderColor.replace('rgb', 'rgba').replace(')', ', 0.1)');
+
+          const labels = graphData.map(d => d.date);
+          const ratingData = graphData.map(d => d.totalRating);
+          const priceData = graphData.map(d => d.price);
+
+          // Rating Chart
+          const ratingCtx = document.getElementById('ratingChart');
+          if (ratingCtx) {
+            new Chart(ratingCtx, {
+              type: 'line',
+              data: {
+                labels: labels,
+                datasets: [{
+                  label: 'Total Rating',
+                  data: ratingData,
+                  borderColor: borderColor,
+                  backgroundColor: backgroundColor,
+                  tension: 0.4,
+                  fill: true,
+                }]
+              },
+              options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                  legend: {
+                    display: false
+                  }
+                },
+                scales: {
+                  y: {
+                    beginAtZero: false,
+                    min: 0,
+                    max: 25,
+                    ticks: {
+                      stepSize: 5
+                    }
+                  }
+                }
+              }
+            });
+          }
+
+          // Price Chart
+          const priceCtx = document.getElementById('priceChart');
+          if (priceCtx) {
+            new Chart(priceCtx, {
+              type: 'line',
+              data: {
+                labels: labels,
+                datasets: [{
+                  label: 'Price ($)',
+                  data: priceData,
+                  borderColor: borderColor,
+                  backgroundColor: backgroundColor,
+                  tension: 0.4,
+                  fill: true,
+                }]
+              },
+              options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                  legend: {
+                    display: false
+                  }
+                },
+                scales: {
+                  y: {
+                    beginAtZero: false,
+                    ticks: {
+                      callback: function(value) {
+                        return '$' + value.toFixed(2);
+                      }
+                    }
+                  }
+                }
+              }
+            });
+          }
+        }
+
+        // Initialize charts when DOM is ready
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initCharts);
+        } else {
+          initCharts();
+        }
+      })();
+    </script>
+  </>
+)}
 
