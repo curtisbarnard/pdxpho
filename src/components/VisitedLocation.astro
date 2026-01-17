@@ -1,0 +1,296 @@
+---
+import { Image } from 'astro:assets';
+
+interface Visit {
+  name: string;
+  dateVisited: string;
+  herbs: number;
+  aroma: number;
+  flavor: number;
+  noodles: number;
+  meat: number;
+  price: number;
+  notes: string;
+  googleRating: number;
+  category: string;
+}
+
+interface Props {
+  locationId: string;
+  name: string;
+  link: string;
+  visits: Visit[];
+}
+
+const { locationId, name, link, visits } = Astro.props;
+
+// Visits are already sorted in reverse chronological order (most recent first)
+const mostRecentVisit = visits[0];
+const lastVisited = new Date(mostRecentVisit.dateVisited).toLocaleDateString('en-us', {
+  day: 'numeric',
+  year: 'numeric',
+  month: 'short',
+});
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/images/*.{jpeg,jpg,png,gif,webp}'
+);
+
+// Create a chronological copy (oldest first) to determine visit numbers
+// Image numbers correspond to chronological order (first visit = v1, second = v2, etc.)
+const chronologicalVisits = [...visits].sort((a, b) => {
+  const dateA = new Date(a.dateVisited).getTime();
+  const dateB = new Date(b.dateVisited).getTime();
+  return dateA - dateB; // Ascending order (oldest first)
+});
+
+// Create a map from visit date to visit number (chronological)
+const visitNumberMap = new Map<string, number>();
+chronologicalVisits.forEach((visit, index) => {
+  visitNumberMap.set(visit.dateVisited, index + 1); // Visit numbers start at 1
+});
+
+// Helper function to find image for a specific visit number
+function findImageForVisit(locationId: string, type: 'A' | 'B', visitNumber: number, images: Record<string, () => Promise<{ default: ImageMetadata }>>): string | null {
+  const imagePath = `/src/images/${locationId}${type}v${visitNumber}.webp`;
+  return imagePath in images ? imagePath : null;
+}
+---
+
+<article class="location-page">
+  <header>
+    <h1>{name}</h1>
+    <p class="map-link"><a href={link} target="_blank" rel="noopener noreferrer">View on Map <span class="external-link-arrow">↗</span></a></p>
+  </header>
+
+  {visits.map((visit) => {
+    // Get the chronological visit number for this visit
+    const visitNumber = visitNumberMap.get(visit.dateVisited) || 1;
+    const visitDate = new Date(visit.dateVisited).toLocaleDateString('en-us', {
+      day: 'numeric',
+      year: 'numeric',
+      month: 'short',
+    });
+    
+    const phoImage = findImageForVisit(locationId, 'A', visitNumber, images);
+    const herbsImage = findImageForVisit(locationId, 'B', visitNumber, images);
+    const hasPhoImage = phoImage !== null;
+    const hasHerbsImage = herbsImage !== null;
+
+    return (
+      <section class="visit-section">
+        <h2 class="visit-date">{visitDate}</h2>
+        
+        {(hasPhoImage || hasHerbsImage) && (
+          <div class="images">
+            {hasPhoImage && phoImage && (
+              <Image
+                src={images[phoImage]()}
+                alt="A bowl of Vietnamese beef noodle soup"
+                width="375"
+                height="375"
+              />
+            )}
+            {hasHerbsImage && herbsImage && (
+              <Image
+                src={images[herbsImage]()}
+                alt="A plate of herbs used to top beef noodle soup"
+                width="375"
+                height="375"
+              />
+            )}
+          </div>
+        )}
+        <div class="stats">
+          <div class={`stat-grid ${visits.length < 2 ? 'single-stat' : ''}`}>
+            <div class="stat-item">
+              <span class="stat-label">Price</span>
+              <span class="stat-value">${visit.price}</span>
+            </div>
+            {visits.length >= 2 && (
+              <>
+                <div class="stat-item">
+                  <span class="stat-label">Herbs</span>
+                  <span class="stat-value">{visit.herbs}/5</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label">Aroma</span>
+                  <span class="stat-value">{visit.aroma}/5</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label">Flavor</span>
+                  <span class="stat-value">{visit.flavor}/5</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label">Noodles</span>
+                  <span class="stat-value">{visit.noodles}/5</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label">Meat</span>
+                  <span class="stat-value">{visit.meat}/5</span>
+                </div>
+                <div class="stat-item total-score">
+                  <span class="stat-label">Total</span>
+                  <span class="stat-value">{visit.herbs + visit.aroma + visit.flavor + visit.noodles + visit.meat}/25</span>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+
+        <div class="notes">
+          <h3>Notes</h3>
+          <p>{visit.notes}</p>
+        </div>
+      </section>
+    );
+  })}
+</article>
+
+<style>
+  .location-page {
+    padding: 2rem 0;
+  }
+
+  header {
+    margin-bottom: 2rem;
+  }
+
+  header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+  }
+
+  header a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  header a:hover {
+    text-decoration: underline;
+  }
+
+  .map-link {
+    margin: 0;
+    font-weight: 600;
+  }
+
+  .external-link-arrow {
+    display: inline-block;
+    margin-left: 0.25rem;
+    font-size: 0.9em;
+    vertical-align: baseline;
+  }
+
+  .visit-section {
+    margin: 3rem 0;
+    padding-top: 2rem;
+    border-top: 2px solid var(--light-pink);
+  }
+
+  .visit-section:first-of-type {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+  }
+
+  .visit-date {
+    margin: 0 0 1.5rem 0;
+    font-size: 1.75rem;
+    color: var(--black);
+  }
+
+  .images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 2rem 0;
+    justify-items: center;
+  }
+
+  .images img {
+    border-radius: 1rem;
+    max-width: 100%;
+    height: auto;
+    box-shadow: var(--medium-shadow);
+  }
+
+  .stats {
+    margin: 2rem 0;
+  }
+
+  .stats h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.5rem;
+  }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+
+  .stat-grid.single-stat {
+    grid-template-columns: minmax(150px, max-content);
+  }
+
+  .stat-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem;
+    background-color: var(--white);
+    border-radius: 0.5rem;
+    box-shadow: var(--low-shadow);
+  }
+
+  .stat-label {
+    font-weight: 600;
+  }
+
+  .stat-value {
+    color: var(--dark-pink);
+    font-weight: 600;
+  }
+
+  .total-score {
+    background-color: var(--light-pink);
+    font-weight: 700;
+  }
+
+  .total-score .stat-value {
+    font-size: 1.1em;
+  }
+
+  .notes {
+    margin: 2rem 0;
+  }
+
+  .notes h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.5rem;
+  }
+
+  .notes p {
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .images {
+      grid-template-columns: 1fr;
+    }
+
+    .stat-grid {
+      grid-template-columns: 1fr;
+    }
+
+    header h1 {
+      font-size: 2rem;
+    }
+
+    .visit-date {
+      font-size: 1.5rem;
+    }
+  }
+</style>
+

@@ -1,0 +1,74 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import VisitedLocation from '../../components/VisitedLocation.astro';
+import UnvisitedLocation from '../../components/UnvisitedLocation.astro';
+import locations from '../../data/locations.json';
+import visits from '../../data/visits.json';
+
+interface Location {
+  id: number;
+  name: string;
+  link: string;
+  coordinates: string;
+  visits?: Visit[];
+}
+
+interface Visit {
+  name: string;
+  dateVisited: string;
+  herbs: number;
+  aroma: number;
+  flavor: number;
+  noodles: number;
+  meat: number;
+  price: number;
+  notes: string;
+  googleRating: number;
+  category: string;
+}
+
+export async function getStaticPaths() {
+  const locationsWithVisits = (locations as Location[]).map(location => {
+    const locationVisits = (visits as Visit[]).filter(v => v.name === location.name);
+    // Sort visits by date (most recent first)
+    locationVisits.sort((a, b) => {
+      const dateA = new Date(a.dateVisited).getTime();
+      const dateB = new Date(b.dateVisited).getTime();
+      return dateB - dateA; // Descending order (most recent first)
+    });
+    return locationVisits.length > 0 ? { ...location, visits: locationVisits } : location;
+  });
+  
+  return locationsWithVisits.map(location => ({
+    params: { id: location.id.toString() },
+    props: { location }
+  }));
+}
+
+const { location } = Astro.props;
+const title = `${location.name}`;
+---
+
+<Layout title={title}>
+  <main>
+    {location.visits && location.visits.length > 0 ? (
+      <VisitedLocation
+        locationId={location.id.toString()}
+        name={location.name}
+        link={location.link}
+        visits={location.visits}
+      />
+    ) : (
+      <UnvisitedLocation
+        name={location.name}
+        link={location.link}
+      />
+    )}
+  </main>
+</Layout>
+
+<style>
+  main {
+    padding-top: 1rem;
+  }
+</style>

@@ -1,0 +1,52 @@
+---
+interface Props {
+  name: string;
+  link: string;
+}
+
+const { name, link } = Astro.props;
+---
+
+<article class="location-page">
+    <header>
+        <h1><a href={link}>{name}</a></h1>
+    </header>
+    <p>I haven't eaten here yet, check back soon!</p>
+</article>
+
+<style>
+  .location-page {
+    padding: 2rem 0;
+  }
+
+  header {
+    margin-bottom: 2rem;
+  }
+
+  header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+  }
+
+  header a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  header a:hover {
+    text-decoration: underline;
+  }
+
+  p {
+    margin: 0;
+    font-style: italic;
+    font-size: 1.25rem;
+  }
+
+  @media (max-width: 768px) {
+    header h1 {
+      font-size: 2rem;
+    }
+  }
+</style>
+

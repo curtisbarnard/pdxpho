@@ -71,52 +71,63 @@ const hasPhoImage = phoImage && images[phoImage];
 const hasHerbsImage = herbsImage && images[herbsImage];
 ---
 
-<div class='card'>
-  <a href={link}><h2>{name}</h2></a>
-  <div class='card-details'>
-    {averageRating !== null && (
-      <span class='average-rating'>Rating: {averageRating.toFixed(2)}</span>
-    )}
-    <span class='price'>Price: ${price}</span>
-    <span class='last-visited'><i>Last Visited: {lastVisited}</i></span>
-  </div>
-  {(hasPhoImage || hasHerbsImage) && (
-    <div class='images'>
-      {hasPhoImage && phoImage && (
-        <Image
-          src={images[phoImage]()}
-          alt='A bowl of Vietnamese beef noodle soup'
-          width='375'
-          height='375'
-        />
+<a href={`/locations/${locationId}`} class='card-link'>
+  <div class='card'>
+    <h2>{name}</h2>
+    <div class='card-details'>
+      {averageRating !== null && (
+        <span class='average-rating'>Rating: {averageRating.toFixed(2)}</span>
       )}
-      {hasHerbsImage && herbsImage && (
-        <Image
-          src={images[herbsImage]()}
-          alt='A plate of herbs used to top beef noodle soup'
-          width='375'
-          height='375'
-        />
-      )}
+      <span class='price'>Price: ${price}</span>
+      <span class='last-visited'><i>Last Visited: {lastVisited}</i></span>
     </div>
-  )}
-  <p>{notes}</p>
-</div>
+    {(hasPhoImage || hasHerbsImage) && (
+      <div class='images'>
+        {hasPhoImage && phoImage && (
+          <Image
+            src={images[phoImage]()}
+            alt='A bowl of Vietnamese beef noodle soup'
+            width='375'
+            height='375'
+          />
+        )}
+        {hasHerbsImage && herbsImage && (
+          <Image
+            src={images[herbsImage]()}
+            alt='A plate of herbs used to top beef noodle soup'
+            width='375'
+            height='375'
+          />
+        )}
+      </div>
+    )}
+    <p>{notes}</p>
+  </div>
+</a>
 
 <style>
+  .card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
   .card {
     border-radius: 1rem;
     padding: 1rem 2rem;
     background-color: var(--white);
     box-shadow: var(--medium-shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+  }
+
+  .card-link:hover .card {
+    transform: translateY(-2px);
+    box-shadow: var(--high-shadow, 0 4px 12px rgba(0, 0, 0, 0.15));
   }
 
   h2 {
     margin: 0;
-  }
-
-  a {
-    text-decoration: none;
   }
 
   li {
