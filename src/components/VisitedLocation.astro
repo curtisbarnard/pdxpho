@@ -1,5 +1,7 @@
 ---
 import { Image } from 'astro:assets';
+import allVisits from '../data/visits.json';
+import locations from '../data/locations.json';
 
 interface Visit {
   name: string;
@@ -61,6 +63,34 @@ const graphData = chronologicalVisits.map(visit => ({
   price: visit.price,
 }));
 
+// Calculate average rating across all visits
+const allVisitsArray = allVisits as Visit[];
+const averageRating = allVisitsArray.reduce((sum, visit) => {
+  return sum + visit.herbs + visit.aroma + visit.flavor + visit.noodles + visit.meat;
+}, 0) / allVisitsArray.length;
+
+// Calculate minimum rating across all visits
+const minRating = Math.min(...allVisitsArray.map(visit => 
+  visit.herbs + visit.aroma + visit.flavor + visit.noodles + visit.meat
+));
+
+// Calculate average price from most recent visit per location
+const locationNames = (locations as Array<{ name: string }>).map(loc => loc.name);
+const mostRecentVisitsByLocation = locationNames.map(locationName => {
+  const locationVisits = allVisitsArray
+    .filter(v => v.name === locationName)
+    .sort((a, b) => {
+      const dateA = new Date(a.dateVisited).getTime();
+      const dateB = new Date(b.dateVisited).getTime();
+      return dateB - dateA; // Most recent first
+    });
+  return locationVisits.length > 0 ? locationVisits[0] : null;
+}).filter(visit => visit !== null) as Visit[];
+
+const averagePrice = mostRecentVisitsByLocation.reduce((sum, visit) => {
+  return sum + visit.price;
+}, 0) / mostRecentVisitsByLocation.length;
+
 // Helper function to find image for a specific visit number
 function findImageForVisit(locationId: string, type: 'A' | 'B', visitNumber: number, images: Record<string, () => Promise<{ default: ImageMetadata }>>): string | null {
   const imagePath = `/src/images/${locationId}${type}v${visitNumber}.webp`;
@@ -77,14 +107,15 @@ function findImageForVisit(locationId: string, type: 'A' | 'B', visitNumber: num
   {visits.length >= 2 && (
     <section class="graphs-section">
       <div class="graph-container">
-        <h2>Total Rating Over Time</h2>
+        <h2>Total Rating</h2>
         <canvas id="ratingChart"></canvas>
       </div>
       <div class="graph-container">
-        <h2>Price Over Time</h2>
+        <h2>Price</h2>
         <canvas id="priceChart"></canvas>
       </div>
     </section>
+    <p>The graphs show the trend of the total rating and price for this restaurant over time. The dashed lines represent the average rating of all visits to all restaurants and the average price amongst all locations based on their most recent visit only.</p>
   )}
 
   {visits.map((visit) => {
@@ -207,8 +238,7 @@ function findImageForVisit(locationId: string, type: 'A' | 'B', visitNumber: num
   }
 
   .visit-section {
-    margin: 3rem 0;
-    padding-top: 2rem;
+    padding-top: 1rem;
     border-top: 2px solid var(--light-pink);
   }
 
@@ -294,16 +324,10 @@ function findImageForVisit(locationId: string, type: 'A' | 'B', visitNumber: num
     font-size: 1.5rem;
   }
 
-  .notes p {
-    line-height: 1.8;
-    margin: 0;
-  }
-
   .graphs-section {
-    margin: 2rem 0 3rem 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    gap: 1rem;
   }
 
   .graph-container {
@@ -335,7 +359,7 @@ function findImageForVisit(locationId: string, type: 'A' | 'B', visitNumber: num
 
     .graphs-section {
       grid-template-columns: 1fr;
-      gap: 1.5rem;
+      gap: 1rem;
     }
 
     header h1 {
@@ -351,13 +375,16 @@ function findImageForVisit(locationId: string, type: 'A' | 'B', visitNumber: num
 {visits.length >= 2 && (
   <>
     <script data-graph-data type="application/json" set:html={JSON.stringify(graphData)}></script>
+    <script data-averages type="application/json" set:html={JSON.stringify({ averageRating, averagePrice, minRating })}></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" is:inline></script>
     <script is:inline>
       (function() {
         const graphDataScript = document.querySelector('[data-graph-data]');
-        if (!graphDataScript) return;
+        const averagesScript = document.querySelector('[data-averages]');
+        if (!graphDataScript || !averagesScript) return;
         
         const graphData = JSON.parse(graphDataScript.textContent || '[]');
+        const averages = JSON.parse(averagesScript.textContent || '{}');
         if (graphData.length === 0) return;
 
         // Wait for Chart.js to load
@@ -370,6 +397,7 @@ function findImageForVisit(locationId: string, type: 'A' | 'B', visitNumber: num
           // Get CSS variable values
           const root = document.documentElement;
           const Pink = getComputedStyle(root).getPropertyValue('--pink').trim();
+          const AlabasterExtraDark = getComputedStyle(root).getPropertyValue('--alabaster-extra-dark').trim();
           
           // Convert HSL to RGB for Chart.js (Chart.js needs RGB format)
           // Helper function to convert HSL to RGB
@@ -404,6 +432,7 @@ function findImageForVisit(locationId: string, type: 'A' | 'B', visitNumber: num
           
           const borderColor = hslToRgb(Pink);
           const backgroundColor = borderColor.replace('rgb', 'rgba').replace(')', ', 0.1)');
+          const averageLineColor = hslToRgb(AlabasterExtraDark);
 
           const labels = graphData.map(d => d.date);
           const ratingData = graphData.map(d => d.totalRating);
@@ -423,6 +452,14 @@ function findImageForVisit(locationId: string, type: 'A' | 'B', visitNumber: num
                   backgroundColor: backgroundColor,
                   tension: 0.4,
                   fill: true,
+                }, {
+                  label: 'Average Rating (All Visits)',
+                  data: Array(labels.length).fill(averages.averageRating),
+                  borderColor: averageLineColor,
+                  backgroundColor: 'transparent',
+                  borderDash: [5, 5],
+                  pointRadius: 0,
+                  borderWidth: 2,
                 }]
               },
               options: {
@@ -436,7 +473,7 @@ function findImageForVisit(locationId: string, type: 'A' | 'B', visitNumber: num
                 scales: {
                   y: {
                     beginAtZero: false,
-                    min: 0,
+                    min: Math.floor(averages.minRating),
                     max: 25,
                     ticks: {
                       stepSize: 5
@@ -461,6 +498,14 @@ function findImageForVisit(locationId: string, type: 'A' | 'B', visitNumber: num
                   backgroundColor: backgroundColor,
                   tension: 0.4,
                   fill: true,
+                }, {
+                  label: 'Average Price (Most Recent per Location)',
+                  data: Array(labels.length).fill(averages.averagePrice),
+                  borderColor: averageLineColor,
+                  backgroundColor: 'transparent',
+                  borderDash: [5, 5],
+                  pointRadius: 0,
+                  borderWidth: 2,
                 }]
               },
               options: {
