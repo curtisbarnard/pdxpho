@@ -29,29 +29,33 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 
 const phoImage = '/src/images/' + locationId + 'Av1.webp';
 const herbsImage = '/src/images/' + locationId + 'Bv1.webp';
-if (!images[phoImage])
-  throw new Error(`"${phoImage}" does not exist in glob: "src/images/*.{jpeg,jpg,png,gif,webp}"`);
-if (!images[herbsImage])
-  throw new Error(`"${herbsImage}" does not exist in glob: "src/images/*.{jpeg,jpg,png,gif,webp}"`);
+const hasPhoImage = images[phoImage];
+const hasHerbsImage = images[herbsImage];
 ---
 
 <div class='card'>
   <a href={link}><h2>{name} (${price})</h2></a>
   <span><i>Last Visited: {lastVisited}</i></span>
-  <div class='images'>
-    <Image
-      src={images[phoImage]()}
-      alt='A bowl of Vietnamese beef noodle soup'
-      width='375'
-      height='375'
-    />
-    <Image
-      src={images[herbsImage]()}
-      alt='A plate of herbs used to top beef noodle soup'
-      width='375'
-      height='375'
-    />
-  </div>
+  {(hasPhoImage || hasHerbsImage) && (
+    <div class='images'>
+      {hasPhoImage && (
+        <Image
+          src={images[phoImage]()}
+          alt='A bowl of Vietnamese beef noodle soup'
+          width='375'
+          height='375'
+        />
+      )}
+      {hasHerbsImage && (
+        <Image
+          src={images[herbsImage]()}
+          alt='A plate of herbs used to top beef noodle soup'
+          width='375'
+          height='375'
+        />
+      )}
+    </div>
+  )}
   <p>{notes}</p>
 </div>
 
