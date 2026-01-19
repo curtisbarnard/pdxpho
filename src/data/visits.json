@@ -583,5 +583,83 @@
     "notes": "The basil, lime, and jalapeño are in great condition, but the bean sprouts are off-white with some browning and greying at the ends. The noodles are overcooked, clumping, and falling apart. The aroma is beefy with no noticeable spice. The flavor is also beefy, salty, and not too sweet, but lacks spice. The meats are all pretty bland. The tripe tastes clean, but the brisket is dry. The meatball has a rough, mealy texture, and the tendon isn’t cooked enough for my liking.",
     "googleRating": 4.5,
     "category": ""
+  },
+  {
+    "name": "Rose VL Deli",
+    "dateVisited": "2025-4-8",
+    "herbs": 3,
+    "aroma": 3,
+    "flavor": 4,
+    "noodles": 5,
+    "meat": 3,
+    "price": 17,
+    "notes": "The basil is slightly bruised. Most of the bean sprouts are plump and white, with a few having brown or grey wilted ends. Lime and jalapeño are in good condition.The broth aroma is sweet and cinnamon-forward. The flavor is sweet and salty, very clean, and doesn't scream beefiness. It has a slick, fatty mouthfeel but tastes light, with a slight sourness that gives it balance and makes it easy to keep eating. The noodles are nearly perfect—just a bit overcooked for my taste. The tai is thick-sliced but tender and mild in flavor. The meatballs are sliced, which I like, with good tendon content, heavily emulsified and smooth. They’re salty but mild in flavor. I unfortunately forgot to take a photo of the bowl before tucking in so that will have to come with visit two.",
+    "googleRating": 4.8,
+    "category": ""
+  },
+  {
+    "name": "Bambuza Vietnam Kitchen - PDX Concourse C & E",
+    "dateVisited": "2025-4-19",
+    "herbs": 2,
+    "aroma": 2,
+    "flavor": 2,
+    "noodles": 3,
+    "meat": 1,
+    "price": 18,
+    "notes": "The aroma has a hint of cinnamon and clove but is very mild with little beefiness. The flavor is quite sweet and somewhat salty. The noodles are overcooked but not clumping or falling apart. The steak is very dry and lacks flavor. Basil is in decent condition, though there isn’t much of it. The bean sprouts are starting to yellow but have no grey or brown spots—mostly full and unbroken. The jalapeño is fresh, and the lime looks a couple days old and slightly dried out.",
+    "googleRating": 3.4,
+    "category": ""
+  },
+  {
+    "name": "Thai Orchid Portland",
+    "dateVisited": "2025-6-21",
+    "herbs": 3,
+    "aroma": 2,
+    "flavor": 2,
+    "noodles": 3,
+    "meat": 2,
+    "price": 15,
+    "notes": "Basil and bean sprouts are fresh, though the sprouts are pretty broken up. Lime and jalapeño are fresh. The broth aroma is garlicky with cinnamon and a meaty, almost porky note. The flavor is sweet and very garlic-forward, with spice in the background. The meat flavor doesn’t come through much. The noodles are more cooked than I’d like but not clumping or falling apart. The menu lists meatballs only, but the bowl also included sliced beef. The meatballs taste like they have a bit too much filler, but have a nice amount of tendon. The sliced beef is thick, bland, and not very tender.",
+    "googleRating": 4.1,
+    "category": ""
+  },
+  {
+    "name": "Fish Sauce",
+    "dateVisited": "2025-7-26",
+    "herbs": 2,
+    "aroma": 4,
+    "flavor": 3,
+    "noodles": 3,
+    "meat": 2,
+    "price": 18,
+    "notes": "The bean sprouts are plump and white. Basil is haggard—bruised, ripped, and in short supply. Cilantro and lime are in good condition. One slice of jalapeño had some black seeds. The broth aroma is clove-forward with possible cardamom and an almost incense-like note. The flavor is savory and not too salty, but it tastes more like a Western beef broth with little spice character. The noodles are cooked too much for my liking, but are not breaking or clumping. The menu says it comes with filet mignon and meatballs, but there were no meatballs—just sliced meat. The meat is sliced a little thicker and because it is layed down in a clump raw, after it is cooked it tends to stay clumped. I would prefer if the slices were keep apart so it was easier to pick up inidividual slices.",
+    "googleRating": 4.5,
+    "category": ""
+  },
+  {
+    "name": "Pho Hathanh",
+    "dateVisited": "2026-1-17",
+    "herbs": 3,
+    "aroma": 4,
+    "flavor": 3,
+    "noodles": 2,
+    "meat": 4,
+    "price": 18.99,
+    "notes": "Bean sprouts are crisp and white, basil is slightly bruised, jalapeños are fresh, and the limes show some brown spotting on the skin. The aroma is sweet and floral (is it white pepper?) backed by beef, no other spices come through strongly. The broth is well salted but leans overly sweet, but the beef flavor remains deep and clean. Noodles are short, broken and fall short of al dente, though they aren't clumping or continuing to break apart. The tai is medium rare and clean tasting but on the tough side, while the fatty brisket is well cooked with excellent beef flavor. Meatballs are well emulsified with a few fatty pockets and a clean taste without many crunchy bits, and the tendon is properly cooked, neither too soft nor too crunchy, with a clean finish.",
+    "googleRating": 4.8,
+    "category": ""
+  },
+  {
+    "name": "Phở Oregon Restaurant",
+    "dateVisited": "2025-10-13",
+    "herbs": 3,
+    "aroma": 4,
+    "flavor": 3,
+    "noodles": 4,
+    "meat": 2,
+    "price": 19,
+    "notes": "The broth has a beefy onion aroma with minimal spice, delivering a rich, fatty, beefy sweetness. The noodles are well cooked, al dente and not clumped. Cilantro is only lightly bruised, basil is more heavily bruised, and bean sprouts are just beginning to yellow, though mostly intact, while the jalapeño and lime are fresh and in good condition. The tendon is cooked soft all the way through with no bite, which I prefer, while the tai is super rare and sweet. The meatball has a distinct fishy, almost crab-like flavor with noticeable chunks of tendon, and the fatty brisket is tender with a clean, beef-forward taste. Tripe is thinly sliced and clean tasting, though the flank comes in tiny pieces with a slightly mealy texture.",
+    "googleRating": 4.4,
+    "category": ""
   }
 ]
