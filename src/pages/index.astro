@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
 import locations from '../data/locations.json';
 import visits from '../data/visits.json';
 
@@ -17,8 +16,38 @@ function addVisitsToLocation(locations: any[], visits: any[]) {
         return dateB - dateA; // Descending order (most recent first)
       });
       location.visits = locationVisits[0];
+      location.allVisits = locationVisits; // Store all visits for calculating total points
     }
   }
+}
+
+// Calculate total points for locations visited at least twice
+function calculateTotalPoints(locationName: string, allVisits: any[]): number | null {
+  const locationVisits = allVisits.filter(visit => visit.name === locationName);
+  
+  if (locationVisits.length < 2) {
+    return null;
+  }
+  
+  // Sort by date (most recent first)
+  locationVisits.sort((a, b) => {
+    const dateA = new Date(a.dateVisited).getTime();
+    const dateB = new Date(b.dateVisited).getTime();
+    return dateB - dateA; // Descending order (most recent first)
+  });
+  
+  // If more than 3 visits, only use the most recent 3
+  const visitsToAverage = locationVisits.length > 3 
+    ? locationVisits.slice(0, 3) 
+    : locationVisits;
+  
+  // Calculate average total rating
+  const totalRatings = visitsToAverage.map(visit => {
+    return visit.herbs + visit.aroma + visit.flavor + visit.noodles + visit.meat;
+  });
+  
+  const sum = totalRatings.reduce((acc, curr) => acc + curr, 0);
+  return sum / visitsToAverage.length;
 }
 
 // Remove locations with no visits, then sort first by price and then by total rating
@@ -40,7 +69,6 @@ function sortLocations(locations: any[]) {
   return filtered;
 }
 
-// TODO need to update this to only use the most recent visit for each location, not all visits
 function calculateAveragePrice(visits: any[]) {
   const sum = visits.reduce((acc, curr) => {
     return acc + curr.price;
@@ -50,6 +78,19 @@ function calculateAveragePrice(visits: any[]) {
 
 addVisitsToLocation(locations, visits);
 const locationsSorted = sortLocations(locations);
+
+// Add rank and total points to each location
+const locationsWithData = locationsSorted.map((location, index) => {
+  const totalPoints = calculateTotalPoints(location.name, visits);
+  return {
+    ...location,
+    rank: index + 1,
+    totalPoints,
+    lastVisitDate: location.visits.dateVisited,
+    price: location.visits.price,
+  };
+});
+
 const averagePrice = Number(calculateAveragePrice(visits).toFixed(2));
 const title = 'PDX Phở';
 ---
@@ -59,38 +100,304 @@ const title = 'PDX Phở';
   <span>Average Price: ${averagePrice}</span>
   <p>
     Of the {locations.length} places serving Phở in Portland I have visted {locationsSorted.length} of
-    them. The below list is sorted with the highest rating at the top. Where the rating is the same I
-    have ranked the cheaper bowl higher. Rating values will not be released until I have visited a place
-    at least twice.
+    them. The below tables contains all the places I have visted. You can click on a place to go to a detailed page with photos, notes and statistics. The table is sorted by rank, but you can click on a column header to sort by that column if you prefer. Where the rating is the same I have ranked the cheaper bowl higher. Rating values will not be released until I have visited a place at least twice.
   </p>
-  <ul>
-    {
-      locationsSorted.map((location) => (
-        <li>
-          <Card
-            locationId={location.id}
-            name={location.name}
-            link={location.link}
-            dateVisited={location.visits.dateVisited}
-            price={location.visits.price}
-            notes={location.visits.notes}
-          />
-        </li>
-      ))
-    }
-  </ul>
+  
+  <div class="table-container">
+    <table id="restaurants-table">
+      <thead>
+        <tr>
+          <th data-sort="rank" class="sortable rank-cell">
+            Rank
+            <span class="sort-indicator"></span>
+          </th>
+          <th data-sort="name" class="sortable name-cell">
+            Name
+            <span class="sort-indicator"></span>
+          </th>
+          <th data-sort="totalPoints" class="sortable points-cell">
+            Score
+            <span class="sort-indicator"></span>
+          </th>
+          <th data-sort="price" class="sortable price-cell">
+            Price
+            <span class="sort-indicator"></span>
+          </th>
+          <th data-sort="lastVisitDate" class="sortable date-cell">
+            Last Visit
+            <span class="sort-indicator"></span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {locationsWithData.map((location) => (
+          <tr 
+            data-location-id={location.id} 
+            data-rank={location.rank}
+            data-total-points={location.totalPoints !== null ? location.totalPoints : ''}
+            data-price={location.price}
+            data-last-visit-date={location.lastVisitDate}
+            class="table-row"
+          >
+            <td class="rank-cell">{location.rank}</td>
+            <td class="name-cell">{location.name}</td>
+            <td class="points-cell">
+              {location.totalPoints !== null ? location.totalPoints.toFixed(2) : '—'}
+            </td>
+            <td class="price-cell">${location.price.toFixed(2)}</td>
+            <td class="date-cell">
+              {new Date(location.lastVisitDate).toLocaleDateString('en-us', {
+                day: 'numeric',
+                year: 'numeric',
+                month: 'short',
+              })}
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
 </main>
+
+<script>
+  const table = document.getElementById('restaurants-table') as HTMLTableElement;
+  const tbody = table?.querySelector('tbody');
+  const headers = Array.from(table?.querySelectorAll('th.sortable') || []) as HTMLTableCellElement[];
+
+  // Parse row data from data attributes
+  function parseRowData(row: HTMLTableRowElement) {
+    const id = parseInt(row.getAttribute('data-location-id') || '0');
+    const name = row.querySelector('.name-cell')?.textContent || '';
+    const rank = parseInt(row.getAttribute('data-rank') || '0');
+    const totalPointsAttr = row.getAttribute('data-total-points') || '';
+    const totalPoints = totalPointsAttr === '' ? null : parseFloat(totalPointsAttr);
+    const price = parseFloat(row.getAttribute('data-price') || '0');
+    const lastVisitDate = row.getAttribute('data-last-visit-date') || '';
+
+    return { id, name, rank, totalPoints, price, lastVisitDate, row };
+  }
+
+  // Get all rows and their data
+  function getAllRowsData() {
+    const rows = Array.from(tbody?.querySelectorAll('tr') || []) as HTMLTableRowElement[];
+    return rows.map(parseRowData);
+  }
+
+  // Sort function
+  function sortTable(column: string, direction: 'asc' | 'desc') {
+    const rowsData = getAllRowsData();
+    
+    const sortedData = [...rowsData].sort((a, b) => {
+      let aVal: any;
+      let bVal: any;
+
+      switch (column) {
+        case 'name':
+          aVal = a.name.toLowerCase();
+          bVal = b.name.toLowerCase();
+          break;
+        case 'rank':
+          aVal = a.rank;
+          bVal = b.rank;
+          break;
+        case 'totalPoints':
+          aVal = a.totalPoints === null ? -Infinity : a.totalPoints;
+          bVal = b.totalPoints === null ? -Infinity : b.totalPoints;
+          break;
+        case 'price':
+          aVal = a.price;
+          bVal = b.price;
+          break;
+        case 'lastVisitDate':
+          aVal = new Date(a.lastVisitDate).getTime();
+          bVal = new Date(b.lastVisitDate).getTime();
+          break;
+        default:
+          return 0;
+      }
+
+      if (aVal < bVal) return direction === 'asc' ? -1 : 1;
+      if (aVal > bVal) return direction === 'asc' ? 1 : -1;
+      return 0;
+    });
+
+    // Update DOM
+    if (tbody) {
+      tbody.innerHTML = '';
+      sortedData.forEach((data) => {
+        const clonedRow = data.row.cloneNode(true) as HTMLTableRowElement;
+        // Re-attach click handler
+        clonedRow.addEventListener('click', () => {
+          const locationId = clonedRow.getAttribute('data-location-id');
+          if (locationId) {
+            window.location.href = `/locations/${locationId}`;
+          }
+        });
+        tbody.appendChild(clonedRow);
+      });
+    }
+
+    // Update sort indicators
+    headers.forEach((header) => {
+      const indicator = header.querySelector('.sort-indicator');
+      if (indicator) {
+        indicator.textContent = '';
+        if (header.getAttribute('data-sort') === column) {
+          indicator.textContent = direction === 'asc' ? ' ↑' : ' ↓';
+        }
+      }
+    });
+  }
+
+  // Add click handlers to headers
+  headers.forEach((header) => {
+    header.addEventListener('click', () => {
+      const column = header.getAttribute('data-sort');
+      if (!column) return;
+
+      const currentIndicator = header.querySelector('.sort-indicator')?.textContent;
+      let direction: 'asc' | 'desc' = 'asc';
+
+      // Toggle direction if already sorted
+      if (currentIndicator?.includes('↑')) {
+        direction = 'desc';
+      } else if (currentIndicator?.includes('↓')) {
+        direction = 'asc';
+      }
+
+      sortTable(column, direction);
+    });
+  });
+
+  // Add click handlers to initial rows
+  const initialRows = Array.from(tbody?.querySelectorAll('tr') || []) as HTMLTableRowElement[];
+  initialRows.forEach((row) => {
+    row.addEventListener('click', () => {
+      const locationId = row.getAttribute('data-location-id');
+      if (locationId) {
+        window.location.href = `/locations/${locationId}`;
+      }
+    });
+  });
+</script>
 
 <style>
   main {
     padding-top: 1rem;
   }
-  ul {
-    padding: 0;
+
+  .table-container {
+    overflow-x: auto;
+    margin-top: 1.5rem;
+    -webkit-overflow-scrolling: touch;
   }
 
-  li {
-    list-style: none;
-    margin: 2rem 0;
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--white);
+    box-shadow: var(--medium-shadow);
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+
+  thead {
+    background-color: var(--light-pink);
+  }
+
+  th {
+    padding: 1rem 0.5rem;
+    font-weight: 600;
+    font-family: 'Playfair Display Variable';
+    border-bottom: 2px solid var(--alabaster-extra-dark);
+  }
+
+  th.sortable {
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s;
+  }
+
+  th.sortable:hover {
+    background-color: var(--alabaster-dark);
+  }
+
+  .sort-indicator {
+    margin-left: 0.25rem;
+    font-size: 0.875rem;
+    color: var(--dark-pink);
+  }
+
+  tbody tr {
+    border-bottom: 1px solid var(--alabaster);
+    transition: background-color 0.2s;
+    cursor: pointer;
+  }
+
+  tbody tr:hover {
+    background-color: var(--alabaster);
+  }
+
+  tbody tr:last-child {
+    border-bottom: none;
+  }
+
+  td {
+    padding: 0.5rem 0.5rem;
+  }
+
+  .name-cell {
+    text-align: left;
+    font-weight: 600;
+  }
+
+  .rank-cell {
+    text-align: center;
+  }
+  .points-cell,
+  .price-cell {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .date-cell {
+    white-space: nowrap;
+    text-align: left;
+  }
+
+  /* Mobile optimizations */
+  @media (max-width: 768px) {
+    .table-container {
+      margin-left: -1rem;
+      margin-right: -1rem;
+      padding: 0 1rem;
+    }
+
+    table {
+      font-size: 0.875rem;
+    }
+
+    th:first-child,
+    td:first-child {
+      padding-left: 1rem;
+    }
+
+    th:last-child,
+    td:last-child {
+      padding-right: 1rem;
+    }
+
+    /* Make table scrollable horizontally on very small screens */
+    @media (max-width: 480px) {
+      .table-container {
+        margin-left: -1rem;
+        margin-right: -1rem;
+        padding: 0;
+      }
+
+      table {
+        min-width: 600px;
+      }
+    }
   }
 </style>
